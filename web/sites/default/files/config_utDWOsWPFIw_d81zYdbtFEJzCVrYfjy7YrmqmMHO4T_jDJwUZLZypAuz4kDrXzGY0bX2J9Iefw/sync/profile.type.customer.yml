@@ -1,0 +1,20 @@
+uuid: 1929a15f-f401-4de0-bfe9-7cb7ddd67d43
+langcode: es
+status: true
+dependencies:
+  enforced:
+    module:
+      - commerce_order
+third_party_settings:
+  commerce_order:
+    customer_profile_type: true
+_core:
+  default_config_hash: I3_fH4tUQVejPgxvJzH1-mGg9A9OaY4Hm5iN2G2Fz20
+id: customer
+label: Cliente
+display_label: 'Datos del cliente'
+multiple: true
+registration: false
+roles: {  }
+allow_revisions: false
+new_revision: false

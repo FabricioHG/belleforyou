@@ -18,7 +18,7 @@ base_field: cid
 display:
   default:
     id: default
-    display_title: 'Por defecto'
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
@@ -252,7 +252,7 @@ display:
       tags: {  }
   block_1:
     id: block_1
-    display_title: Bloque
+    display_title: Block
     display_plugin: block
     position: 1
     display_options:

@@ -1,0 +1,16 @@
+uuid: d7f61be5-f28a-4568-8fbf-62826b77422a
+langcode: es
+status: true
+dependencies:
+  module:
+    - commerce_product
+  enforced:
+    module:
+      - commerce_cart
+      - commerce_product
+_core:
+  default_config_hash: xtrHHgI_SwA-1npf3GB0ntU65fMvm4mxImBtkbmZWSk
+id: commerce_product_variation.cart
+label: 'Cesta de la compra'
+targetEntityType: commerce_product_variation
+cache: true
