@@ -17,12 +17,15 @@
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.3",
+        "drupal/bootstrap4": "^2.1",
+        "drupal/bootstrap_library": "^2.0",
         "drupal/commerce": "^2.32",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/inline_entity_form": "^1.0-rc6",
         "drupal/pathauto": "^1.11",
+        "drupal/views_bootstrap": "^4.4",
         "drush/drush": "^11.3"
     },
     "conflict": {

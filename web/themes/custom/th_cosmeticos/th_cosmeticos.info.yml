@@ -1,0 +1,7 @@
+name: 'Cosmeticos Bootstrap4'
+type: theme
+base theme: bootstrap4
+description: 'Subtema a partir de Bootstrap 4'
+core_version_requirement: ^9
+libraries:
+- th_cosmeticos/global-styling

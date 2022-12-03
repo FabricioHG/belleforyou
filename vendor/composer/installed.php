@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9451a2bae813f38cd95ebab7596105ea8d3ac167',
+        'reference' => '113229a42dddeada938b49ac18c280f715e0ea99',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -215,6 +215,24 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/admin_toolbar',
             'aliases' => array(),
             'reference' => '3.3.0',
+            'dev_requirement' => false,
+        ),
+        'drupal/bootstrap4' => array(
+            'pretty_version' => '2.1.15',
+            'version' => '2.1.15.0',
+            'type' => 'drupal-theme',
+            'install_path' => __DIR__ . '/../../web/themes/contrib/bootstrap4',
+            'aliases' => array(),
+            'reference' => '2.1.15',
+            'dev_requirement' => false,
+        ),
+        'drupal/bootstrap_library' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/bootstrap_library',
+            'aliases' => array(),
+            'reference' => '2.0.1',
             'dev_requirement' => false,
         ),
         'drupal/commerce' => array(
@@ -472,7 +490,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9451a2bae813f38cd95ebab7596105ea8d3ac167',
+            'reference' => '113229a42dddeada938b49ac18c280f715e0ea99',
             'dev_requirement' => false,
         ),
         'drupal/state_machine' => array(
@@ -491,6 +509,15 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/token',
             'aliases' => array(),
             'reference' => '8.x-1.11',
+            'dev_requirement' => false,
+        ),
+        'drupal/views_bootstrap' => array(
+            'pretty_version' => '4.4.0',
+            'version' => '4.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/views_bootstrap',
+            'aliases' => array(),
+            'reference' => '8.x-4.4',
             'dev_requirement' => false,
         ),
         'drush/drush' => array(
@@ -1106,6 +1133,15 @@
             'reference' => 'aeccc4dc52a9e634f1d1eebeb21eacfdcff1053d',
             'dev_requirement' => false,
         ),
+        'twbs/bootstrap' => array(
+            'pretty_version' => 'v5.2.3',
+            'version' => '5.2.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twbs/bootstrap',
+            'aliases' => array(),
+            'reference' => 'cb021439c683d9805e2864c58095b92d405e9b11',
+            'dev_requirement' => false,
+        ),
         'twig/twig' => array(
             'pretty_version' => 'v2.15.3',
             'version' => '2.15.3.0',
@@ -1114,6 +1150,12 @@
             'aliases' => array(),
             'reference' => 'ab402673db8746cb3a4c46f3869d6253699f614a',
             'dev_requirement' => false,
+        ),
+        'twitter/bootstrap' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v5.2.3',
+            ),
         ),
         'typo3/phar-stream-wrapper' => array(
             'pretty_version' => 'v3.1.7',
