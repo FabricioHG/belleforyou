@@ -1,0 +1,27 @@
+uuid: c50568f9-b1e8-4ce0-9036-e946b5bc1417
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: _G1IfGESk7WqvVCi7B3VJxhSY0YICgv1OmuVPJqO8bE
+id: th_cosmeticos_main_menu
+theme: th_cosmeticos
+region: nav_main
+weight: -7
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

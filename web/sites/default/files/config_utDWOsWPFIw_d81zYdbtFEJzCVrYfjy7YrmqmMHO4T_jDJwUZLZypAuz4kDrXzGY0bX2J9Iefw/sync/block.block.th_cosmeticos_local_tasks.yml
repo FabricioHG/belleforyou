@@ -1,0 +1,22 @@
+uuid: a26a71a9-78c7-455c-956e-087313932bbf
+langcode: es
+status: true
+dependencies:
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: Qf2BoIzd9py5AYXZj8fJzCYDyVk1-AWXcu-AqQeDZKA
+id: th_cosmeticos_local_tasks
+theme: th_cosmeticos
+region: content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

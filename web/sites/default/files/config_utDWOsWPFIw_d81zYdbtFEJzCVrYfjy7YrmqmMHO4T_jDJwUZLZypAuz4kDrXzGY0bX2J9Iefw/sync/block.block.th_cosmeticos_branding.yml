@@ -1,0 +1,25 @@
+uuid: b4c0b04b-3aef-41d7-84b4-cb85c1abf438
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: d-0emr1mEq7sFKDu5RHUJckvNk62hvIZdRwPEfnJyGg
+id: th_cosmeticos_branding
+theme: th_cosmeticos
+region: nav_branding
+weight: -7
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

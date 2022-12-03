@@ -8,3 +8,4 @@ b4_footer_schema: dark
 b4_footer_bg_schema: secondary
 b4_top_container: container
 b4_top_container_config: ''
+langcode: es

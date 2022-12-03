@@ -1,0 +1,22 @@
+uuid: d3e4e48e-0de2-4be2-9e2b-2cd5a98edeff
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: kigu8pTxXt1qGR2NJ5HHdC4G2G1wsDrIjLPKBT5wUBc
+id: th_cosmeticos_content
+theme: th_cosmeticos
+region: content
+weight: -2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

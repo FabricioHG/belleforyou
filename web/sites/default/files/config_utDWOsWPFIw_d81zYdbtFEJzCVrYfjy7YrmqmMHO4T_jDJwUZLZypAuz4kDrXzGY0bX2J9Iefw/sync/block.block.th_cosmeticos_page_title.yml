@@ -1,0 +1,20 @@
+uuid: 11faae44-c2ce-4c53-9d5d-3d5e356c0fdd
+langcode: es
+status: true
+dependencies:
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
+id: th_cosmeticos_page_title
+theme: th_cosmeticos
+region: content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

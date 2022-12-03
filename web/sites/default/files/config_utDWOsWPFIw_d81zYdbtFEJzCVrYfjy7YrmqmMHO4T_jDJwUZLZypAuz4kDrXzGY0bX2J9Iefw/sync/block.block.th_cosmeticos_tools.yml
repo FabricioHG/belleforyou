@@ -1,0 +1,27 @@
+uuid: 8558aaf0-d9e8-461e-a001-6332e46050ff
+langcode: es
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: TszJ7dH_11Qjmo_OpMzqznaED4Bvy1XfVnBzTC9LZXE
+id: th_cosmeticos_tools
+theme: th_cosmeticos
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

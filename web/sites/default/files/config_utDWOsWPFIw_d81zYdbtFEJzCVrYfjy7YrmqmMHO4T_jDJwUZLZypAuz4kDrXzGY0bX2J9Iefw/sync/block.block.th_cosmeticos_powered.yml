@@ -1,0 +1,22 @@
+uuid: 55b28453-8aff-432e-a5f1-c27f9875480e
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: I6Esh8cDlPdl2POZg4MOSRUrQNYA1UNCJCxL2yqT_wc
+id: th_cosmeticos_powered
+theme: th_cosmeticos
+region: footer
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

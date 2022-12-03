@@ -1,0 +1,22 @@
+uuid: 2990cab5-3afa-4fb6-b9a5-05c4bab3dee0
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: KC12e0aosUnBBs5bd374JVcQjJaFNOSIHzu0dUGf22o
+id: th_cosmeticos_messages
+theme: th_cosmeticos
+region: content
+weight: -7
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

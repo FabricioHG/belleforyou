@@ -4,4 +4,15 @@ base theme: bootstrap4
 description: 'Subtema a partir de Bootstrap 4'
 core_version_requirement: ^9
 libraries:
-- th_cosmeticos/global-styling
+  - th_cosmeticos/global-styling
+
+regions:
+  header: Header
+  nav_branding: 'Navigation branding region'
+  nav_main: 'Main navigation region'
+  nav_additional: 'Additional navigation region (eg search form, social icons, etc)'
+  breadcrumb: Breadcrumbs
+  content: 'Main content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer

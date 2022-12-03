@@ -1,0 +1,20 @@
+uuid: c4d922cc-4303-4b9d-a458-c54a4b528e7d
+langcode: es
+status: true
+dependencies:
+  theme:
+    - th_cosmeticos
+_core:
+  default_config_hash: XRdb8LpbArVA6CpuuEZxzi50JIdjsJaCCZ5o3fH0Blk
+id: th_cosmeticos_local_actions
+theme: th_cosmeticos
+region: content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }
