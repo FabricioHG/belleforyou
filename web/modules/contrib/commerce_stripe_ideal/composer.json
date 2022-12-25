@@ -1,0 +1,11 @@
+{
+    "name": "drupal/commerce_stripe_ideal",
+    "type": "drupal-module",
+    "description": "Provides Commerce integration for Stripe Ideal Payments.",
+    "homepage": "https://drupal.org/project/commerce_stripe_ideal",
+    "require": {
+        "drupal/commerce": "^2.21",
+        "stripe/stripe-php": "^7.25"
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,96 @@
+/***Front***/
+.view-todos-los-productos .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.view-todos-los-productos .views-row {
+  width: 200px;
+  margin: 20px;
+}
+.bg-dark{
+	background-color: #383737 !important;
+}
+.navbar-nav.mr-auto li.nav-item a{
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+.container-fluid.slideshow_class{
+	padding: 0px;
+}
+#block-views-block-slideshow-block-1 {
+  width: 100%;
+  height: auto;
+}
+#views-bootstrap-slideshow-block-1 .carousel-inner img{
+	width: 100%;
+	height: auto;
+}
+.card{
+	background-color: #fbfbfb;
+	border: 1px solid #fbfbfb;
+}
+.card-desc p{
+	text-align: center;
+	font-size: 13px;
+}
+.card-desc strong{
+	font-weight: normal;
+}
+.card-title {
+  text-align: center;
+}
+.card-title a{
+	color: #000;
+}
+.card-text.list_price, .card-text.price{
+  text-align: center;
+  background-color: #A8DBCE;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px;
+}
+.views-row.card .views-field.views-field-variations-target-id {
+  text-align: center;
+}
+.card-text.list_price {
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.price_tach {
+  border: 1px solid #000;
+  display: block;
+  position: absolute;
+  width: 92%;
+  top: 13px;
+}
+
+/* Medidas de celulares ***************************************************************************************************/
+ /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.nav-item {
+  		margin-left: 10px;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+} 
