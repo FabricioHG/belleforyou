@@ -1,0 +1,23 @@
+uuid: 7e3434bb-9b2c-4f47-8a56-26a070127784
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.liston
+  module:
+    - text
+id: node.liston.body
+field_name: body
+entity_type: node
+bundle: liston
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

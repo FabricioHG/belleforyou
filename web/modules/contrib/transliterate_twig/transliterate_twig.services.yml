@@ -1,0 +1,5 @@
+services:
+  transliterate_twig.twig_extension:
+    class: Drupal\transliterate_twig\TwigExtension\TransliterateFilter
+    tags:
+      - { name: twig.extension }

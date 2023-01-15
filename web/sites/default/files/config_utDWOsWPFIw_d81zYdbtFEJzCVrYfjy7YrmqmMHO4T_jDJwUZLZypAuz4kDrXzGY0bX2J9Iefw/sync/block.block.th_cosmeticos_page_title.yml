@@ -1,6 +1,6 @@
 uuid: 11faae44-c2ce-4c53-9d5d-3d5e356c0fdd
 langcode: es
-status: true
+status: false
 dependencies:
   theme:
     - th_cosmeticos
@@ -9,7 +9,7 @@ _core:
 id: th_cosmeticos_page_title
 theme: th_cosmeticos
 region: content
-weight: -6
+weight: 0
 provider: null
 plugin: page_title_block
 settings:

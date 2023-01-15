@@ -9,7 +9,7 @@ _core:
 id: th_cosmeticos_local_tasks
 theme: th_cosmeticos
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:

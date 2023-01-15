@@ -1,0 +1,30 @@
+uuid: eefab1bd-880e-48e0-a844-9543e9ef466f
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:15229102-a6d3-4320-a90d-cad60a602d7f'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: liston
+theme: th_cosmeticos
+region: slideshow
+weight: -6
+provider: null
+plugin: 'block_content:15229102-a6d3-4320-a90d-cad60a602d7f'
+settings:
+  id: 'block_content:15229102-a6d3-4320-a90d-cad60a602d7f'
+  label: Listón
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/cremas/*\r\n/productos/categoria/cremas\r\n"

@@ -1,0 +1,33 @@
+uuid: cf9afd8f-fd87-4b70-8de0-aa91965c6620
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.liston.body
+    - field.field.node.liston.field_imagen_liston
+    - node.type.liston
+  module:
+    - text
+    - user
+id: node.liston.teaser
+targetEntityType: node
+bundle: liston
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_imagen_liston: true
+  langcode: true

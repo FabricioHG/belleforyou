@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @ingroup themeable
+ */
+#}
+{#
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {{- product|without('variation_attributes') -}}
+</article>
+#}
+
+{% set variation_object = product.variation_price['#object'] %}
+
+{% set precio_de_lista = variation_object.getListPrice().getNumber() %}
+{% set precio_de_lista_moneda = variation_object.getListPrice().getCurrencyCode() %}
+
+{% set precio = variation_object.getPrice().getNumber() %}
+{% set precio_moneda = variation_object.getPrice().getCurrencyCode() %}
+
+<article{{ attributes }}>
+	<div class="int_prod_data">
+		<h4>{{product.title}}</h4>
+		<p>{{product.body}}</p>
+		<p>{{product.field_categorias_producto}}</p>
+
+		{% if precio_de_lista > 0 %}
+			<p class="p_int_precio_lista">Precio anterior: <span class="sp_int_precio_lista">{{precio_de_lista|number_format(2, '.', ',')}}</span>  <span class="label_moneda">{{precio_de_lista_moneda}}</span> <span class="tach_pre_lis_int"></span> </p>
+		{% endif%}
+		<p class="p_int_precio">Precio: <span class="sp_int_precio">{{precio|number_format(2, '.', ',')}}</span> <span class="label_moneda">{{precio_moneda}}</span></p>
+		
+		<p>{{product.variations}} </p>
+	</div>
+</article>

@@ -1,0 +1,22 @@
+uuid: 2ba06a5e-65a8-46a2-a9be-f037c828aada
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+id: node.slideshow.promote
+field_name: promote
+entity_type: node
+bundle: slideshow
+label: 'Promocionado a la página principal'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

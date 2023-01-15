@@ -2,4 +2,6 @@ global-styling:
   css:
     theme:
       css/style.css: {}
+  js:
+    js/galeria.js: {}
  

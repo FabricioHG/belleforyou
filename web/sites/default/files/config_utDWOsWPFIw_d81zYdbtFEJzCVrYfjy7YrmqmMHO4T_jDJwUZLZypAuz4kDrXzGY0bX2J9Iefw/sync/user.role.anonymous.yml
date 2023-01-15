@@ -7,6 +7,7 @@ dependencies:
   module:
     - comment
     - commerce_checkout
+    - commerce_order
     - commerce_product
     - contact
     - filter
@@ -21,8 +22,10 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access comments'
+  - 'access commerce_order overview'
   - 'access content'
   - 'access site-wide contact form'
   - 'search content'
   - 'use text format restricted_html'
   - 'view commerce_product'
+  - 'view own commerce_order'

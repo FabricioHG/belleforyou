@@ -1,0 +1,30 @@
+uuid: e114f676-5074-4dd8-a0a7-d7d5655dcab9
+langcode: es
+status: true
+dependencies:
+  config:
+    - views.view.galeria_producto_int
+  module:
+    - system
+    - views
+  theme:
+    - th_cosmeticos
+id: views_block__galeria_producto_int_gal_blok
+theme: th_cosmeticos
+region: content
+weight: -3
+provider: null
+plugin: 'views_block:galeria_producto_int-gal_blok'
+settings:
+  id: 'views_block:galeria_producto_int-gal_blok'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/product/*'

@@ -1,0 +1,17 @@
+uuid: 4d862531-7657-4bcb-826b-ba161eb1b71d
+langcode: es
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Slideshow
+type: slideshow
+description: 'Agrega una imagen en el encabezado de la pagina principal.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

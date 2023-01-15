@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.default
     - field.field.commerce_product.default.body
+    - field.field.commerce_product.default.field_categorias_producto
     - field.field.commerce_product.default.field_fotos_producto
     - image.style.producto_int
   module:
@@ -25,6 +26,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_categorias_producto:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_fotos_producto:
     type: image
     label: hidden
@@ -34,7 +43,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   title:
     type: string
@@ -42,7 +51,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   variations:
     type: commerce_add_to_cart
@@ -50,7 +59,7 @@ content:
     settings:
       combine: true
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
 hidden:
   created: true

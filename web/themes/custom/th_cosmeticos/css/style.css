@@ -1,10 +1,10 @@
 /***Front***/
-.view-todos-los-productos .view-content {
+.view-todos-los-productos .view-content, .view-display-id-page_1 .view-content{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.view-todos-los-productos .views-row {
+.view-todos-los-productos .views-row, .view-display-id-page_1 .views-row{
   width: 200px;
   margin: 20px;
 }
@@ -65,6 +65,74 @@
   position: absolute;
   width: 92%;
   top: 13px;
+}
+/*Interior*/
+#block-views-block-galeria-producto-int-gal-blok {
+  display: inline-block;
+}
+.product_int #block-th-cosmeticos-content {
+  display: inline-block;
+  max-width: 800px;
+  vertical-align: top;
+}
+/*Interior carrousel*/
+ /* The grid: Four equal columns that floats next to each other */
+.cont_galer_int .column {
+  margin: 5px;
+}
+/* Style the images inside the grid */
+.cont_galer_int .column img {
+  opacity: 0.8;
+  width: 50px;
+  cursor: pointer;
+}
+.cont_galer_int .column img:hover {
+  opacity: 1;
+}
+/* Clear floats after the columns */
+.row.cont_mini_img {
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+/* The expanding image container (positioning is needed to position the close button and the text) */
+.cont_galer_int .container.cont_img_grade {
+  position: relative;
+}
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+.cont_galer_int {
+  max-width: 200px;
+  margin-right: 20px;
+}
+.p_int_precio_lista {
+  position: relative;
+  display: inline-block;
+}
+.tach_pre_lis_int {
+  border: 1px solid;
+  width: 90px;
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+.p_int_precio_lista {
+  color: #565959 !important;
+}
+.p_int_precio {
+  color: #FA5401;
+}
+.button--add-to-cart{
+  background: #FA5401;
+  border-color: #FA5401;
 }
 
 /* Medidas de celulares ***************************************************************************************************/

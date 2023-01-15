@@ -1,0 +1,11 @@
+uuid: bc5f6b33-dcf5-4d0e-b201-fd0f81723727
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.liston
+id: node.liston
+target_entity_type_id: node
+target_bundle: liston
+default_langcode: site_default
+language_alterable: false

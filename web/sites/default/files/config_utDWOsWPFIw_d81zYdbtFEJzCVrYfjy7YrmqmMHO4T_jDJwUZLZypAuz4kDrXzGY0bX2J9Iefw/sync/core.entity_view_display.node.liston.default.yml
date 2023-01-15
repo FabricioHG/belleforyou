@@ -1,0 +1,36 @@
+uuid: 04b4f7e7-4701-4b06-9079-5fcb96cf61a1
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.liston.body
+    - field.field.node.liston.field_imagen_liston
+    - image.style.large
+    - node.type.liston
+  module:
+    - image
+    - user
+id: node.liston.default
+targetEntityType: node
+bundle: liston
+mode: default
+content:
+  field_imagen_liston:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  langcode: true
