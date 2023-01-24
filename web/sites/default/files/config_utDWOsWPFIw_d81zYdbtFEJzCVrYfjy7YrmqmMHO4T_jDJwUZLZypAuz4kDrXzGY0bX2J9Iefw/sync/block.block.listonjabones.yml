@@ -1,0 +1,30 @@
+uuid: 2902a315-3552-4553-bf46-24beb1ce3be8
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9e225a5f-4966-4a0b-be8d-571dd0a29ebf'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonjabones
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:9e225a5f-4966-4a0b-be8d-571dd0a29ebf'
+settings:
+  id: 'block_content:9e225a5f-4966-4a0b-be8d-571dd0a29ebf'
+  label: 'Liston jabones'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/jabones/*\r\n/productos/categoria/jabones"

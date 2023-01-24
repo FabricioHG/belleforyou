@@ -1,0 +1,30 @@
+uuid: 8054862e-e3aa-4a99-b0ed-47ff1fdadf97
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:10e6e16a-29b0-4f22-b201-6fd29dba3c44'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonmascarillas
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:10e6e16a-29b0-4f22-b201-6fd29dba3c44'
+settings:
+  id: 'block_content:10e6e16a-29b0-4f22-b201-6fd29dba3c44'
+  label: 'Liston mascarillas'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/mascarillas/*\r\n/productos/categoria/mascarillas"

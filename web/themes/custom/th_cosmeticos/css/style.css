@@ -1,4 +1,17 @@
 /***Front***/
+header{
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+}
+main {
+  margin-top: 85px;
+}
+.region-breadcrumb{
+  position: sticky;
+  top: 85px;
+  z-index: 2;
+}
 .view-todos-los-productos .view-content, .view-display-id-page_1 .view-content{
   display: flex;
   flex-wrap: wrap;
@@ -7,6 +20,7 @@
 .view-todos-los-productos .views-row, .view-display-id-page_1 .views-row{
   width: 200px;
   margin: 20px;
+  margin-top: 50px;
 }
 .bg-dark{
 	background-color: #383737 !important;
@@ -65,6 +79,36 @@
   position: absolute;
   width: 92%;
   top: 13px;
+}
+/*Menu categorias*/
+#block-categoriasfiltromenu ul{
+  flex-direction: row;
+}
+#block-categoriasfiltromenu {
+  padding: 10px;
+  background-color: #fbfbfb;
+}
+#block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item {
+  border-left: 2px solid #A8DBCE;
+  padding: 0px 10px 0px 10px;
+  margin-left: 0px;
+  margin-top: 8px;
+}
+#block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item a{
+  color: #000;
+  text-decoration: none;
+}
+#block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item:hover{
+  background-color: #FA5401;
+  color: #fff;
+
+}
+#block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item:hover a{
+  background-color: #FA5401;
+  color: #fff;
+}
+#block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item a:hover{
+  color: #fff;
 }
 /*Interior*/
 #block-views-block-galeria-producto-int-gal-blok {
@@ -134,7 +178,28 @@
   background: #FA5401;
   border-color: #FA5401;
 }
-
+.logo_pie img{
+  max-width: 200px;
+}
+.cont_pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.derechos p{
+  text-align: center;
+}
+.redes_pie img{
+  width: 100px;
+}
+.menu_pie{
+  width: 256px;
+  font-size: 13px;
+}
+footer.mt-auto.footer-dark.text-light.bg-secondary{
+ background-color: #383737 !important;
+}
 /* Medidas de celulares ***************************************************************************************************/
  /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

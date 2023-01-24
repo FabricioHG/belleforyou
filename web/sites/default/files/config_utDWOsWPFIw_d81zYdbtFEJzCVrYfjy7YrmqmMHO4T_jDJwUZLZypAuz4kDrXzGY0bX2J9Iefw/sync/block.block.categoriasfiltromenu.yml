@@ -1,0 +1,25 @@
+uuid: faaafb5c-2f96-4e79-a606-db71ef694eb9
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.categorias-filtro-menu
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+id: categoriasfiltromenu
+theme: th_cosmeticos
+region: breadcrumb
+weight: 0
+provider: null
+plugin: 'system_menu_block:categorias-filtro-menu'
+settings:
+  id: 'system_menu_block:categorias-filtro-menu'
+  label: 'Categorias filtro menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

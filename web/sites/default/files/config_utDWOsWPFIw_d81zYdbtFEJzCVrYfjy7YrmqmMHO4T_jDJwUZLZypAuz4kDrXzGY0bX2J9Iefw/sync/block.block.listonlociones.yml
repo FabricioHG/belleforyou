@@ -1,0 +1,30 @@
+uuid: d9820254-0cc7-4bad-b3d7-493f75126ed4
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:99ea3062-44bf-4684-81ba-c67be1fb35ad'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonlociones
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:99ea3062-44bf-4684-81ba-c67be1fb35ad'
+settings:
+  id: 'block_content:99ea3062-44bf-4684-81ba-c67be1fb35ad'
+  label: 'Liston lociones'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/lociones/*\r\n/productos/categoria/lociones"

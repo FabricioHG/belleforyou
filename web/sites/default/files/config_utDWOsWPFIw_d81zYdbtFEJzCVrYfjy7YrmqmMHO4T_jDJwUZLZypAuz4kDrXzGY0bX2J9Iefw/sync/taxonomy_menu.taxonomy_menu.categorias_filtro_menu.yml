@@ -1,0 +1,16 @@
+uuid: a2525471-df5a-4047-b9bc-e6f8b059299b
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.categorias-filtro-menu
+    - taxonomy.vocabulary.categoria
+id: categorias_filtro_menu
+label: 'Categorias filtro menu'
+vocabulary: categoria
+menu: categorias-filtro-menu
+expanded: false
+depth: 0
+menu_parent: 'categorias-filtro-menu:'
+description_field_name: null
+use_term_weight_order: true

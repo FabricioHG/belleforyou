@@ -1,0 +1,8 @@
+uuid: adf2ed84-1e77-4f4e-a128-70bc557526ee
+langcode: es
+status: true
+dependencies: {  }
+id: categorias-filtro-menu
+label: 'Categorias filtro menu'
+description: ''
+locked: false

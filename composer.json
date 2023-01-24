@@ -32,6 +32,7 @@
         "drupal/inline_entity_form": "^1.0-rc6",
         "drupal/libraries": "^4.0",
         "drupal/pathauto": "^1.11",
+        "drupal/taxonomy_menu": "^3.5",
         "drupal/transliterate_twig": "^1.0",
         "drupal/tvi": "^1.0@RC",
         "drupal/views_bootstrap": "^4.4",

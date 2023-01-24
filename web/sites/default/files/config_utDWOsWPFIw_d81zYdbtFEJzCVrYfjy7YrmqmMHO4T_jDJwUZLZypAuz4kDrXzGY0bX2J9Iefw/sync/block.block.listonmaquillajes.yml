@@ -1,0 +1,30 @@
+uuid: c2ed3ec1-561d-4cf5-85a1-8c56876b1380
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6988cd39-4fee-4a65-ae21-bfb215e0cccf'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonmaquillajes
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:6988cd39-4fee-4a65-ae21-bfb215e0cccf'
+settings:
+  id: 'block_content:6988cd39-4fee-4a65-ae21-bfb215e0cccf'
+  label: 'Liston maquillajes'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/maquillajes/*\r\n/productos/categoria/maquillajes"

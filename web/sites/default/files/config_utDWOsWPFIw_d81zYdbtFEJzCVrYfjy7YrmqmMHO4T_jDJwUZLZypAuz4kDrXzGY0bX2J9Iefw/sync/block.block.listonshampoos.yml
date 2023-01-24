@@ -1,0 +1,30 @@
+uuid: aac94e74-fb36-4e8b-a471-ff1250af7d0c
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:92033292-ecc7-4d09-98fd-8c3564881055'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonshampoos
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:92033292-ecc7-4d09-98fd-8c3564881055'
+settings:
+  id: 'block_content:92033292-ecc7-4d09-98fd-8c3564881055'
+  label: 'Liston shampoos'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/shampoos/*\r\n/productos/categoria/shampoos"

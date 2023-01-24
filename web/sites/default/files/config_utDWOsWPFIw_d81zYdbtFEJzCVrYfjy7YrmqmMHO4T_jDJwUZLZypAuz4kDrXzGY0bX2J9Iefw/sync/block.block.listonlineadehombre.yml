@@ -1,0 +1,30 @@
+uuid: 114e340a-bf0d-4628-b385-79b4a7ba05d4
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:8bf0b6d0-7fde-4730-9805-9c6910b14b38'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listonlineadehombre
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:8bf0b6d0-7fde-4730-9805-9c6910b14b38'
+settings:
+  id: 'block_content:8bf0b6d0-7fde-4730-9805-9c6910b14b38'
+  label: 'Liston linea de hombre'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/linea-hombre/*\r\n/productos/categoria/linea-hombre"

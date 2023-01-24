@@ -1,0 +1,30 @@
+uuid: 211da8b7-4942-4516-ad1b-95824a201876
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:4afc3ded-26ab-438f-954b-75ed56118b49'
+  module:
+    - block_content
+    - system
+  theme:
+    - th_cosmeticos
+id: listoncuidadodelrostro
+theme: th_cosmeticos
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:4afc3ded-26ab-438f-954b-75ed56118b49'
+settings:
+  id: 'block_content:4afc3ded-26ab-438f-954b-75ed56118b49'
+  label: 'Liston cuidado del rostro'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/producto/cuidado-del-rostro/*\r\n/productos/categoria/cuidado-del-rostro"
