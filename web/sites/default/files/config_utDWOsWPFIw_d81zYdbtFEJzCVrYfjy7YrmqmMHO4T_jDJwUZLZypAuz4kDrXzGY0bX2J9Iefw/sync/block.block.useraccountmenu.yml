@@ -1,0 +1,25 @@
+uuid: d534d181-eec8-4815-a7ad-d2ba63808d21
+langcode: es
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - th_cosmeticos
+id: useraccountmenu
+theme: th_cosmeticos
+region: nav_main
+weight: -12
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

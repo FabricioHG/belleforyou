@@ -1,7 +1,11 @@
 uuid: 97c8bc0d-1c7e-4b04-bb84-2faf55242173
 langcode: es
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - commerce_payment
+    - commerce_promotion
+    - commerce_stripe
 _core:
   default_config_hash: 5BYvSDemm8xYwB9rMGFuEuGK6FxVheqtXEUxnpKO2N4
 label: Default
@@ -20,19 +24,34 @@ configuration:
       step: order_information
       weight: 1
       double_entry: true
-    billing_information:
+    payment_information:
       step: order_information
       weight: 2
     review:
       step: review
       weight: 3
+    stripe_review:
+      step: review
+      weight: 4
+      button_id: edit-actions-next
+    payment_process:
+      step: payment
+      weight: 5
+      capture: true
     completion_message:
       step: complete
-      weight: 4
+      weight: 6
       message:
-        value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
-        format: plain_text
+        value: "<h2>¡Gracias por confiar en nosotros!</h2>\r\n\r\n<p><strong>Te enviamos un correo con la información de tu compra. </strong></p>\r\n\r\n<p>Your order number is <strong>[commerce_order:order_number].</strong></p>\r\n\r\n<p>You can view your order on your account page when logged in.</p>\r\n"
+        format: full_html
+    completion_register:
+      step: complete
+      weight: 7
     order_summary:
       step: _sidebar
-      weight: 5
+      weight: 8
       view: null
+    coupon_redemption:
+      step: _disabled
+      weight: 9
+      allow_multiple: false

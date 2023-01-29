@@ -37,7 +37,7 @@ content:
     region: content
   quantity:
     type: number_decimal
-    label: above
+    label: inline
     settings:
       thousand_separator: ''
       decimal_separator: .

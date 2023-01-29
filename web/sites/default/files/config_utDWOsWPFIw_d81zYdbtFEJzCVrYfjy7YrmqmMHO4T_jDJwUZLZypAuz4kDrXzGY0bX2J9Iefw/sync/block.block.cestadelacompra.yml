@@ -1,0 +1,21 @@
+uuid: c3bd251f-2533-47fb-99eb-23631d07bcca
+langcode: es
+status: true
+dependencies:
+  module:
+    - commerce_cart
+  theme:
+    - th_cosmeticos
+id: cestadelacompra
+theme: th_cosmeticos
+region: nav_main
+weight: -11
+provider: null
+plugin: commerce_cart
+settings:
+  id: commerce_cart
+  label: 'Cesta de la compra'
+  label_display: '0'
+  provider: commerce_cart
+  dropdown: false
+visibility: {  }

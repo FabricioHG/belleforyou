@@ -30,6 +30,9 @@ main {
 	text-transform: uppercase;
 	font-size: 14px;
 }
+.navbar-nav.mr-auto li.nav-item a:hover{
+  color: #fcd452;
+}
 .container-fluid.slideshow_class{
 	padding: 0px;
 }
@@ -79,6 +82,13 @@ main {
   position: absolute;
   width: 92%;
   top: 13px;
+}
+#navbarSupportedContent .region.region-nav-main {
+  display: flex;
+  justify-content: space-between;
+}
+#block-th-cosmeticos-content {
+  margin-top: 50px;
 }
 /*Menu categorias*/
 #block-categoriasfiltromenu ul{
@@ -200,6 +210,118 @@ main {
 footer.mt-auto.footer-dark.text-light.bg-secondary{
  background-color: #383737 !important;
 }
+/*Icono carrito de compras*/
+  .icontext {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.icontext .icon-wrap {
+    position: relative;
+}
+.icon-wrap.round {
+    border-radius: 100% !important;
+}
+.icon-wrap {
+    text-align: center;
+}
+.icon-xs {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    display: inline-block;
+}
+.round {
+    border-radius: 200px;
+}
+.text-light {
+    color: #f8f9fa !important;
+}
+.bg-secondary {
+    background-color: #6c757d !important;
+}
+.notify {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    display: inline-block;
+    font-size: 75%;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
+    background-color: rgb(220, 53, 69);
+    padding: 2px 5.6px;
+    border-radius: 10px;
+}
+.icontext .text-wrap {
+    line-height: 1.3;
+    padding-left: 1rem;
+}
+.icono {
+      line-height: 2;
+}
+/*Todos los botones naranjas*/
+.btn-primary{
+  background-color: #FA5401;
+  border: 1px solid #FA5401;
+}
+.btn-primary:hover{
+  background-color: #28a745;
+  border: 1px solid #28a745;
+}
+.delete-order-item.button:hover{
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+/*Proceso de compra formulario*/
+#edit-login {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+/*Tabla resumen de la compra*/
+.checkout-order-summary table{
+  width: 100%;
+}
+.checkout-order-summary table tbody tr td{
+  padding: 5px;
+}
+.subtotal_resume_order {
+  padding: 4px;
+  text-align: right;
+}
+.js-form-item.form-item.js-form-type-number.form-type-number.js-form-item-quantity-0-value.form-item-quantity-0-value{
+  display: flex;
+  align-items: baseline;
+  margin: 1px;
+}
+.js-form-item.form-item.js-form-type-number.form-type-number.js-form-item-quantity-0-value.form-item-quantity-0-value label{
+  margin-right: 10px;
+}
+ .js-form-item.form-item.js-form-type-number.form-type-number.js-form-item-quantity-0-value.form-item-quantity-0-value input{
+  width: 100px;
+  padding: 2px 5px;
+  height: auto;
+}
+.views-row.card .field--name-quantity{
+  display: none;
+}
+/*Menu user*/
+#block-useraccountmenu ul li a{
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+#block-useraccountmenu ul li a:hover{
+  color: #fcd452;
+}
+
 /* Medidas de celulares ***************************************************************************************************/
  /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

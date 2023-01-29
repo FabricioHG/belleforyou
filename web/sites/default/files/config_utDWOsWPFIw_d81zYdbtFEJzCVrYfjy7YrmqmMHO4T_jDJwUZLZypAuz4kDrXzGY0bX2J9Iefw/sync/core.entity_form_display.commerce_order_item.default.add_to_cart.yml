@@ -6,6 +6,7 @@ dependencies:
     - commerce_order.commerce_order_item_type.default
     - core.entity_form_mode.commerce_order_item.add_to_cart
   module:
+    - commerce_order
     - commerce_product
   enforced:
     module:
@@ -24,10 +25,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  quantity:
+    type: commerce_quantity
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      step: '1'
+    third_party_settings: {  }
 hidden:
   adjustments: true
   created: true
-  quantity: true
   status: true
   total_price: true
   uid: true

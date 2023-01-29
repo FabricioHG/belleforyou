@@ -26,17 +26,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  quantity:
-    type: commerce_quantity
-    weight: 1
-    region: content
-    settings:
-      placeholder: ''
-      step: '1'
-    third_party_settings: {  }
   unit_price:
     type: commerce_unit_price
-    weight: 2
+    weight: 1
     region: content
     settings:
       require_confirmation: true
@@ -44,6 +36,7 @@ content:
 hidden:
   adjustments: true
   created: true
+  quantity: true
   status: true
   total_price: true
   uid: true

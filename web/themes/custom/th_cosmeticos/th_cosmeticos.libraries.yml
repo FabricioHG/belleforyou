@@ -2,6 +2,7 @@ global-styling:
   css:
     theme:
       css/style.css: {}
+      css/fontawesome/css/fontawesome-all.min.css: {}
   js:
     js/galeria.js: {}
  
