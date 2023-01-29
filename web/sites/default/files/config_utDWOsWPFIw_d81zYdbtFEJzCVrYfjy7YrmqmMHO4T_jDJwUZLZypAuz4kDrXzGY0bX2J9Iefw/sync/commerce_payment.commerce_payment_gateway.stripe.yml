@@ -16,5 +16,6 @@ configuration:
   collect_billing_information: true
   publishable_key: pk_test_51JfENbLqOkP3SGVAZngORcfd1Aq1KPfvQGGrXmZUZhGkNf2rpMdVKuT2FMYbj5GIts6LATR4IFj3aOy2tiYzrYVE00n7BynUAs
   secret_key: sk_test_51JfENbLqOkP3SGVAApLmsGvGV5Ko3FfeFPQxKtZCno9aT7ePguYAs4wdbDsDVcw6fpWJwo83ComXAgtfBGC24C6800zgAt2Nz3
+  enable_credit_card_icons: false
 conditions: {  }
 conditionOperator: AND

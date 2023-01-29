@@ -32,6 +32,7 @@
                 }
               };
             }
+
             stripe.handleCardPayment(drupalSettings.commerceStripe.clientSecret, data).then(function (result) {
               allowSubmit = true;
               if (result.error) {
@@ -44,6 +45,10 @@
           }
           return true;
         });
+
+        if (drupalSettings.commerceStripe.autoSubmitReviewForm) {
+          $form.submit();
+        }
       });
     },
     detach: function detach(context, settings, trigger) {

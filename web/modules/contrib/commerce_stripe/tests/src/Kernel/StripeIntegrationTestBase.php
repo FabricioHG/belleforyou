@@ -10,7 +10,7 @@ abstract class StripeIntegrationTestBase extends OrderKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'commerce_payment',
     'commerce_stripe',
     'commerce_stripe_test',

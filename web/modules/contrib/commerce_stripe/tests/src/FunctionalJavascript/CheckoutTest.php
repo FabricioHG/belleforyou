@@ -32,7 +32,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'commerce_number_pattern',
     'commerce_product',
     'commerce_cart',
@@ -107,7 +107,9 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       $this->getSession()->getPage()->fillField('contact_information[email_confirm]', 'guest@example.com');
     }
 
-    $this->fillCreditCardData('4242424242424242', '0322', '123');
+    $this->fillCreditCardData('4242424242424242');
+
+    $this->assertSession()->elementExists('css', 'span.payment-method-icon.payment-method-icon--visa');
 
     $this->submitForm([
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
@@ -118,8 +120,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       'payment_information[add_payment_method][billing_information][address][0][address][postal_code]' => '10001',
     ], 'Continue to review');
 
-    $this->assertWaitForText('Visa ending in 4242');
-    $this->assertWaitForText('Expires 3/2022');
+    $this->assertCardDetails();
     $this->submitForm([], 'Pay and complete purchase');
 
     $this->assertWaitForText('Your order number is 1. You can view your order on your account page when logged in.');
@@ -153,11 +154,10 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       $this->getSession()->getPage()->fillField('contact_information[email_confirm]', 'guest@example.com');
     }
 
-    $this->fillCreditCardData('4242424242424242', '0322', '123');
+    $this->fillCreditCardData('4242424242424242');
     $this->submitForm([], 'Continue to review');
 
-    $this->assertWaitForText('Visa ending in 4242');
-    $this->assertWaitForText('Expires 3/2022');
+    $this->assertCardDetails();
     $this->submitForm([], 'Pay and complete purchase');
 
     $this->assertWaitForText('Your order number is 1. You can view your order on your account page when logged in.');
@@ -192,7 +192,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       $this->getSession()->getPage()->fillField('contact_information[email_confirm]', 'guest@example.com');
     }
 
-    $this->fillCreditCardData('4000002500003155', '0322', '123');
+    $this->fillCreditCardData('4000002500003155');
     $this->submitForm([
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -202,8 +202,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       'payment_information[add_payment_method][billing_information][address][0][address][postal_code]' => '10001',
     ], 'Continue to review');
 
-    $this->assertWaitForText('Visa ending in 3155');
-    $this->assertWaitForText('Expires 3/2022');
+    $this->assertCardDetails();
     $this->getSession()->getPage()->pressButton('Pay and complete purchase');
     $this->complete3ds($pass);
 
@@ -244,7 +243,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       $this->getSession()->getPage()->fillField('contact_information[email_confirm]', 'guest@example.com');
     }
 
-    $this->fillCreditCardData('4000002760003184', '0322', '123');
+    $this->fillCreditCardData('4000002760003184');
     $this->submitForm([
       'payment_information[add_payment_method][billing_information][address][0][address][given_name]' => 'Johnny',
       'payment_information[add_payment_method][billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -254,8 +253,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
       'payment_information[add_payment_method][billing_information][address][0][address][postal_code]' => '10001',
     ], 'Continue to review');
 
-    $this->assertWaitForText('Visa ending in 3184');
-    $this->assertWaitForText('Expires 3/2022');
+    $this->assertCardDetails();
     $this->getSession()->getPage()->pressButton('Pay and complete purchase');
 
     $this->complete3ds($pass);
@@ -285,7 +283,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
     $this->drupalGet(Url::fromRoute('entity.commerce_payment_method.add_form', [
       'user' => $customer->id(),
     ]));
-    $this->fillCreditCardData($card_number, '0322', '123');
+    $this->fillCreditCardData($card_number);
     $this->submitForm([
       'add_payment_method[billing_information][address][0][address][given_name]' => 'Johnny',
       'add_payment_method[billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -308,8 +306,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
     $this->drupalGet('checkout/1');
     $this->getSession()->getPage()->pressButton('Continue to review');
     $this->assertSession()->pageTextContains('Payment information');
-    $this->assertSession()->pageTextContains('Visa ending in ' . substr($card_number, -4));
-    $this->assertSession()->pageTextContains('Expires 3/2022');
+    $this->assertCardDetails();
     $this->assertSession()->pageTextContains('Order Summary');
     $this->getSession()->getPage()->pressButton('Pay and complete purchase');
 
@@ -335,7 +332,7 @@ class CheckoutTest extends CommerceWebDriverTestBase {
     $this->drupalGet(Url::fromRoute('entity.commerce_payment_method.add_form', [
       'user' => $customer->id(),
     ]));
-    $this->fillCreditCardData($card_number, '0322', '123');
+    $this->fillCreditCardData($card_number);
     $this->submitForm([
       'add_payment_method[billing_information][address][0][address][given_name]' => 'Johnny',
       'add_payment_method[billing_information][address][0][address][family_name]' => 'Appleseed',
@@ -442,22 +439,25 @@ class CheckoutTest extends CommerceWebDriverTestBase {
    *
    * @param string $card_number
    *   The card number.
-   * @param string $card_exp
-   *   The card expiration.
+   * @param string|null $card_exp
+   *   (optional) The card expiration.
    * @param string $card_cvv
-   *   The card CVV.
+   *   (optional) The card CVV.
    *
    * @throws \Behat\Mink\Exception\ElementNotFoundException
    * @throws \Behat\Mink\Exception\ResponseTextException
    * @throws \WebDriver\Exception
    */
-  protected function fillCreditCardData($card_number, $card_exp, $card_cvv) {
+  protected function fillCreditCardData(string $card_number, string $card_exp = NULL, string $card_cvv = '123') {
     $this->switchToElementFrame('card-number-element');
     $element = $this->getSession()->getPage()->findField('cardnumber');
     $this->fieldTypeInput($element, $card_number);
     $this->getSession()->switchToIFrame();
     $this->assertSession()->pageTextNotContains('Your card number is invalid.');
 
+    if (!$card_exp) {
+      $card_exp = '03' . (date('y') + 1);
+    }
     $this->switchToElementFrame('expiration-element');
     $element = $this->getSession()->getPage()->findField('exp-date');
     $this->fieldTypeInput($element, $card_exp);
@@ -600,6 +600,16 @@ class CheckoutTest extends CommerceWebDriverTestBase {
   protected function waitForStripe() {
     // @todo better assertion to wait for the form to submit.
     sleep(6);
+  }
+
+  /**
+   * Asserts that the card details are shown in the pane summary.
+   */
+  protected function assertCardDetails(): void {
+    $this->assertWaitForText('Visa ending');
+    $payment_method = PaymentMethod::load(1);
+    $this->assertWaitForText('Visa ending in ' . $payment_method->get('card_number')->value);
+    $this->assertWaitForText('Expires ' . $payment_method->get('card_exp_month')->value . '/' . $payment_method->get('card_exp_year')->value);
   }
 
 }

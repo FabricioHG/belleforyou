@@ -43,6 +43,7 @@ class StripeReview extends CheckoutPaneBase {
   public function defaultConfiguration() {
     return [
       'button_id' => 'edit-actions-next',
+      'auto_submit_review_form' => FALSE,
     ] + parent::defaultConfiguration();
   }
 
@@ -50,7 +51,16 @@ class StripeReview extends CheckoutPaneBase {
    * {@inheritdoc}
    */
   public function buildConfigurationSummary() {
-    return $this->t('Button id is @id', ['@id' => $this->configuration['button_id']]);
+    $summary = $this->t('Button id is @id', ['@id' => $this->configuration['button_id']]) . '<br>';
+
+    if (empty($this->configuration['auto_submit_review_form'])) {
+      $summary .= $this->t('Auto submit: Off');
+    }
+    else {
+      $summary .= $this->t('Auto submit: On');
+    }
+
+    return $summary;
   }
 
   /**
@@ -66,6 +76,13 @@ class StripeReview extends CheckoutPaneBase {
       '#default_value' => $this->configuration['button_id'],
     ];
 
+    $form['auto_submit_review_form'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Automatically submit the review form'),
+      '#description' => $this->t('When this is checked, the form the Stripe Review pane is displayed in will automatically submit on load. This starts the SCA process without user intervention.'),
+      '#default_value' => $this->configuration['auto_submit_review_form'],
+    ];
+
     return $form;
   }
 
@@ -78,6 +95,7 @@ class StripeReview extends CheckoutPaneBase {
     if (!$form_state->getErrors()) {
       $values = $form_state->getValue($form['#parents']);
       $this->configuration['button_id'] = $values['button_id'];
+      $this->configuration['auto_submit_review_form'] = !empty($values['auto_submit_review_form']);
     }
   }
 
@@ -118,8 +136,10 @@ class StripeReview extends CheckoutPaneBase {
     else {
       $payment_process_pane = $this->checkoutFlow->getPane('payment_process');
       assert($payment_process_pane instanceof CheckoutPaneInterface);
-      $capture = $payment_process_pane->getConfiguration()['capture'];
-      $intent = $stripe_plugin->createPaymentIntent($this->order, $capture);
+      $intent_attributes = [
+        'capture_method' => $payment_process_pane->getConfiguration()['capture'] ? 'automatic' : 'manual',
+      ];
+      $intent = $stripe_plugin->createPaymentIntent($this->order, $intent_attributes);
     }
     if ($intent->status === PaymentIntent::STATUS_REQUIRES_PAYMENT_METHOD) {
       $payment_method = $this->order->get('payment_method')->entity;
@@ -137,6 +157,21 @@ class StripeReview extends CheckoutPaneBase {
       '#weight' => -200,
     ];
 
+    $auto_submit = !empty($this->configuration['auto_submit_review_form']);
+    if ($auto_submit) {
+      // Add a class to the checkout pane and the form actions
+      $class = 'stripe-review-autosubmit';
+      $pane_form['#attributes']['class'][] = $class;
+      $complete_form['actions']['#attributes']['class'][] = $class;
+      // Add spinner and overlay elements to the pane.
+      $pane_form['autosubmit_loader'] = [
+        '#markup' => '<div class="' . $class . '-loader"></div>',
+      ];
+      // Disable the form submit button.
+      $complete_form['actions']['next']['#attributes']['disabled'] = 'disabled';
+    }
+
+
     $pane_form['#attached']['library'][] = 'commerce_stripe/stripe';
     $pane_form['#attached']['library'][] = 'commerce_stripe/checkout_review';
     $pane_form['#attached']['drupalSettings']['commerceStripe'] = [
@@ -145,6 +180,7 @@ class StripeReview extends CheckoutPaneBase {
       'buttonId' => $this->configuration['button_id'],
       'orderId' => $this->order->id(),
       'paymentMethod' => $intent->payment_method,
+      'autoSubmitReviewForm' => $auto_submit,
     ];
     $profiles = $this->order->collectProfiles();
     if (isset($profiles['shipping']) && !$profiles['shipping']->get('address')->isEmpty()) {

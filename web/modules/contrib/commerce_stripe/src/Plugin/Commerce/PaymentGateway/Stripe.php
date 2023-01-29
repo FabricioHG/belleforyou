@@ -19,6 +19,8 @@ use Drupal\commerce_price\Price;
 use Drupal\commerce_stripe\Event\TransactionDataEvent;
 use Drupal\commerce_stripe\Event\StripeEvents;
 use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Component\Uuid\UuidInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Form\FormStateInterface;
@@ -71,6 +73,13 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
   protected $moduleExtensionList;
 
   /**
+   * The UUID service.
+   *
+   * @var \Drupal\Component\Uuid\UuidInterface
+   */
+  protected $uuidService;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -84,18 +93,24 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
       $container->get('datetime.time'),
       $container->get('commerce_price.minor_units_converter'),
       $container->get('event_dispatcher'),
-      $container->get('extension.list.module')
+      $container->get('extension.list.module'),
+      $container->get('uuid')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, MinorUnitsConverterInterface $minor_units_converter, EventDispatcherInterface $event_dispatcher, ModuleExtensionList $module_extension_list) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, PaymentTypeManager $payment_type_manager, PaymentMethodTypeManager $payment_method_type_manager, TimeInterface $time, MinorUnitsConverterInterface $minor_units_converter, EventDispatcherInterface $event_dispatcher, ModuleExtensionList $module_extension_list, UuidInterface $uuid = NULL) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $payment_type_manager, $payment_method_type_manager, $time, $minor_units_converter);
 
+    if (!$uuid) {
+      @trigger_error('Calling ' . __METHOD__ . '() without the $uuid argument is deprecated in commerce_stripe:8.x-1.0-rc7 and is removed from commerce_stripe:1.0.');
+      $uuid = \Drupal::service('uuid');
+    }
     $this->eventDispatcher = $event_dispatcher;
     $this->moduleExtensionList = $module_extension_list;
+    $this->uuidService = $uuid;
     $this->init();
   }
 
@@ -142,6 +157,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     return [
       'publishable_key' => '',
       'secret_key' => '',
+      'enable_credit_card_icons' => TRUE,
     ] + parent::defaultConfiguration();
   }
 
@@ -157,11 +173,19 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
       '#default_value' => $this->configuration['publishable_key'],
       '#required' => TRUE,
     ];
+
     $form['secret_key'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Secret Key'),
       '#default_value' => $this->configuration['secret_key'],
       '#required' => TRUE,
+    ];
+
+    $form['enable_credit_card_icons'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable Credit Card Icons'),
+      '#description' => $this->t('Enabling this setting will display credit card icons in the payment section during checkout.'),
+      '#default_value' => $this->configuration['enable_credit_card_icons'],
     ];
 
     return $form;
@@ -202,6 +226,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
       $values = $form_state->getValue($form['#parents']);
       $this->configuration['publishable_key'] = $values['publishable_key'];
       $this->configuration['secret_key'] = $values['secret_key'];
+      $this->configuration['enable_credit_card_icons'] = $values['enable_credit_card_icons'];
     }
   }
 
@@ -279,15 +304,32 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
 
     try {
       $remote_id = $payment->getRemoteId();
-      $charge = Charge::retrieve($remote_id);
-      $intent_id = $charge->payment_intent;
+      $intent = NULL;
+      if (strpos($remote_id, "pi_") === 0) {
+        $intent = PaymentIntent::retrieve($remote_id);
+        $intent_id = $intent->id;
+        $charge = Charge::retrieve($intent['charges']['data'][0]->id);
+      }
+      else {
+        $charge = Charge::retrieve($remote_id);
+        $intent_id = $charge->payment_intent;
+      }
+
       $amount_to_capture = $this->minorUnitsConverter->toMinorUnits($amount);
       if (!empty($intent_id)) {
-        $intent = PaymentIntent::retrieve($intent_id);
-        if ($intent->status != 'requires_capture') {
+        if (empty($intent)) {
+          $intent = PaymentIntent::retrieve($intent_id);
+        }
+        if ($intent->status == 'requires_capture') {
+          $intent->capture(['amount_to_capture' => $amount_to_capture]);
+        }
+        if ($intent->status == 'succeeded') {
+          $payment->setState('completed');
+          $payment->save();
+        }
+        else {
           throw new PaymentGatewayException('Only requires_capture PaymentIntents can be captured.');
         }
-        $intent->capture(['amount_to_capture' => $amount_to_capture]);
       }
       else {
         $charge->amount = $amount_to_capture;
@@ -314,11 +356,20 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     // Void Stripe payment - release uncaptured payment.
     try {
       $remote_id = $payment->getRemoteId();
-      $charge = Charge::retrieve($remote_id);
-      $intent_id = $charge->payment_intent;
+      $intent = NULL;
+      if (strpos($remote_id, "pi_") === 0) {
+        $intent = PaymentIntent::retrieve($remote_id);
+        $intent_id = $intent->id;
+      }
+      else {
+        $charge = Charge::retrieve($remote_id);
+        $intent_id = $charge->payment_intent;
+      }
 
       if (!empty($intent_id)) {
-        $intent = PaymentIntent::retrieve($intent_id);
+        if (empty($intent)) {
+          $intent = PaymentIntent::retrieve($intent_id);
+        }
         $statuses_to_void = [
           'requires_payment_method',
           'requires_capture',
@@ -329,6 +380,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
           throw new PaymentGatewayException('The PaymentIntent cannot be voided.');
         }
         $intent->cancel();
+        $data['payment_intent'] = $intent->id;
       }
       else {
         $data = [
@@ -359,11 +411,18 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     try {
       $remote_id = $payment->getRemoteId();
       $minor_units_amount = $this->minorUnitsConverter->toMinorUnits($amount);
-      $data = [
-        'charge' => $remote_id,
-        'amount' => $minor_units_amount,
-      ];
-      $refund = Refund::create($data, ['idempotency_key' => \Drupal::getContainer()->get('uuid')->generate()]);
+      $data = ['amount' => $minor_units_amount];
+
+      if (strpos($remote_id, "pi_") === 0) {
+        $data['payment_intent'] = $remote_id;
+      }
+      else {
+        $data['charge'] = $remote_id;
+      }
+
+      $refund = Refund::create($data, [
+        'idempotency_key' => $this->uuidService->generate(),
+      ]);
       ErrorHelper::handleErrors($refund);
     }
     catch (ApiErrorException $e) {
@@ -430,30 +489,37 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
   /**
    * {@inheritdoc}
    */
-  public function createPaymentIntent(OrderInterface $order, $capture = TRUE) {
+  public function createPaymentIntent(OrderInterface $order, $intent_attributes = [], PaymentInterface $payment = NULL) {
+    if (is_bool($intent_attributes)) {
+      $intent_attributes = [
+        'capture_method' => $intent_attributes ? 'automatic' : 'manual',
+      ];
+      @trigger_error('Passing a boolean representing capture method as the second parameter to StripeInterface::createPaymentIntent() is deprecated in commerce_stripe:8.x-1.0 and this parameter must be an array of payment intent attributes in commerce_stripe:9.x-2.0. See https://www.drupal.org/project/commerce_stripe/issues/3259211', E_USER_DEPRECATED);
+    }
+
     /** @var \Drupal\commerce_payment\Entity\PaymentMethodInterface $payment_method */
-    $payment_method = $order->get('payment_method')->entity;
+    $payment_method = $payment ? $payment->getPaymentMethod() : $order->get('payment_method')->entity;
+    /** @var \Drupal\commerce_price\Price */
+    $amount = $payment ? $payment->getAmount() : $order->getTotalPrice();
 
-    $payment_method_remote_id = $payment_method->getRemoteId();
-    $customer_remote_id = $this->getRemoteCustomerId($order->getCustomer());
-
-    $amount = $this->minorUnitsConverter->toMinorUnits($order->getTotalPrice());
-    $order_id = $order->id();
-    $capture_method = $capture ? 'automatic' : 'manual';
-    $intent_array = [
-      'amount' => $amount,
-      'currency' => strtolower($order->getTotalPrice()->getCurrencyCode()),
+    $default_intent_attributes = [
+      'amount' => $this->minorUnitsConverter->toMinorUnits($amount),
+      'currency' => strtolower($amount->getCurrencyCode()),
       'payment_method_types' => ['card'],
       'metadata' => [
-        'order_id' => $order_id,
+        'order_id' => $order->id(),
         'store_id' => $order->getStoreId(),
       ],
-      'payment_method' => $payment_method_remote_id,
-      'capture_method' => $capture_method,
+      'payment_method' => $payment_method->getRemoteId(),
+      'capture_method' => 'automatic',
     ];
+
+    $customer_remote_id = $this->getRemoteCustomerId($order->getCustomer());
     if (!empty($customer_remote_id)) {
-      $intent_array['customer'] = $customer_remote_id;
+      $default_intent_attributes['customer'] = $customer_remote_id;
     }
+
+    $intent_array = NestedArray::mergeDeep($default_intent_attributes, $intent_attributes);
     try {
       $intent = PaymentIntent::create($intent_array);
       $order->setData('stripe_intent', $intent->id)->save();

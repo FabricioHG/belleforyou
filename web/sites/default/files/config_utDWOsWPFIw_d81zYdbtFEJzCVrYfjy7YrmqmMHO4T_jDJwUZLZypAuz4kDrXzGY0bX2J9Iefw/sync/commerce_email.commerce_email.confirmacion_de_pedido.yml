@@ -1,0 +1,19 @@
+uuid: 920e23ba-0970-43f3-8dcb-1adda1c17b09
+langcode: es
+status: true
+dependencies: {  }
+id: confirmacion_de_pedido
+label: 'Confirmación de pedido'
+from: desde
+toType: email
+to: '[commerce_order:mail]'
+toRole: ''
+cc: '[site:mail]'
+bcc: ''
+subject: 'Pedido #[commerce_order:order_number] confirmado'
+body: "¡Gracias por confiar en nosotros!\r\n\r\nDatos del pedido:\r\n\r\n[commerce_order:cart]\r\nvalor:\r\n[commerce_order:cart:value]\r\nelementos de la orden:\r\n[commerce_order:order_items]\r\nInformación del pago:\r\n[commerce_order:billing_profile]\r\n\r\ntotal:[commerce_order:total_price]"
+queue: false
+conditions: {  }
+conditionOperator: AND
+event: order_paid
+targetEntityType: commerce_order

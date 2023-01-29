@@ -50,6 +50,7 @@ class PaymentMethodAddForm extends BasePaymentMethodAddForm implements TrustedCa
     $element['#attached']['drupalSettings']['commerceStripe'] = [
       'publishableKey' => $plugin->getPublishableKey(),
       'clientSecret' => $client_secret,
+      'enable_credit_card_logos' => FALSE,
     ];
 
     // Populated by the JS library.
@@ -59,6 +60,23 @@ class PaymentMethodAddForm extends BasePaymentMethodAddForm implements TrustedCa
         'id' => 'stripe-payment-method-id',
       ],
     ];
+
+    // Display credit card logos in checkout form.
+    if ($plugin->getConfiguration()['enable_credit_card_icons']) {
+      $element['#attached']['library'][] = 'commerce_stripe/credit_card_icons';
+      $element['#attached']['library'][] = 'commerce_payment/payment_method_icons';
+      $element['#attached']['drupalSettings']['commerceStripe']['enable_credit_card_logos'] = TRUE;
+
+      $supported_credit_cards = [];
+      foreach ($plugin->getCreditCardTypes() as $credit_card) {
+        $supported_credit_cards[] = $credit_card->getId();
+      }
+
+      $element['credit_card_logos'] = [
+        '#theme' => 'commerce_stripe_credit_card_logos',
+        '#credit_cards' => $supported_credit_cards,
+      ];
+    }
 
     $element['card_number'] = [
       '#type' => 'item',
@@ -143,12 +161,13 @@ class PaymentMethodAddForm extends BasePaymentMethodAddForm implements TrustedCa
    */
   public static function addAddressAttributes(array $element, FormStateInterface $form_state) {
     if (isset($element['address'])) {
-      $element['address']['widget'][0]['address']['given_name']['#attributes']['data-stripe'] = 'given_name';
-      $element['address']['widget'][0]['address']['family_name']['#attributes']['data-stripe'] = 'family_name';
-      $element['address']['widget'][0]['address']['address_line1']['#attributes']['data-stripe'] = 'address_line1';
-      $element['address']['widget'][0]['address']['address_line2']['#attributes']['data-stripe'] = 'address_line2';
-      $element['address']['widget'][0]['address']['locality']['#attributes']['data-stripe'] = 'address_city';
-      $element['address']['widget'][0]['address']['postal_code']['#attributes']['data-stripe'] = 'address_zip';
+      $element['address']['widget'][0]['address']['given_name']['#attributes']['data-stripe'] = 'name.1';
+      $element['address']['widget'][0]['address']['family_name']['#attributes']['data-stripe'] = 'name.2';
+      $element['address']['widget'][0]['address']['address_line1']['#attributes']['data-stripe'] = 'address.line1';
+      $element['address']['widget'][0]['address']['address_line2']['#attributes']['data-stripe'] = 'address.line2';
+      $element['address']['widget'][0]['address']['locality']['#attributes']['data-stripe'] = 'address.city';
+      $element['address']['widget'][0]['address']['administrative_area']['#attributes']['data-stripe'] = 'address.state';
+      $element['address']['widget'][0]['address']['postal_code']['#attributes']['data-stripe'] = 'address.postal_code';
       // Country code is a sub-element and needs another callback.
       $element['address']['widget'][0]['address']['country_code']['#pre_render'][] = [get_called_class(), 'addCountryCodeAttributes'];
     }
@@ -169,7 +188,7 @@ class PaymentMethodAddForm extends BasePaymentMethodAddForm implements TrustedCa
    *   The modified form element.
    */
   public static function addCountryCodeAttributes(array $element) {
-    $element['country_code']['#attributes']['data-stripe'] = 'address_country';
+    $element['country_code']['#attributes']['data-stripe'] = 'address.country';
     return $element;
   }
 

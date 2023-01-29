@@ -1,0 +1,45 @@
+commerce_email.commerce_email.*:
+  type: config_entity
+  label: 'Email'
+  mapping:
+    id:
+      type: string
+      label: 'Machine-readable name'
+    label:
+      type: label
+      label: 'Label'
+    from:
+      type: string
+      label: 'From'
+    toType:
+      type: string
+      label: 'Send this email to'
+    to:
+      type: string
+      label: 'Email'
+    toRole:
+      type: string
+      label: 'Role'
+    cc:
+      type: string
+      label: 'Cc'
+    bcc:
+      type: string
+      label: 'Bcc'
+    subject:
+      type: label
+      label: 'Subject'
+    body:
+      type: text
+      label: 'Body'
+      translatable: true
+    queue:
+      type: boolean
+      label: 'Use queue'
+    conditions:
+      type: sequence
+      sequence:
+        type: commerce_condition
+    conditionOperator:
+      type: string
+      label: 'Condition operator'

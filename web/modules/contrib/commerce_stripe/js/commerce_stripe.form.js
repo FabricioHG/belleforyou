@@ -29,6 +29,7 @@
     cardNumber: null,
     cardExpiry: null,
     cardCvc: null,
+    stripe: null,
 
     attach: function (context) {
       var self = this;
@@ -41,8 +42,12 @@
         // Create a Stripe client.
         /* global Stripe */
         try {
-          var stripe = Stripe(drupalSettings.commerceStripe.publishableKey);
-        } catch (e) {
+          if (!self.stripe) {
+            self.stripe = Stripe(drupalSettings.commerceStripe.publishableKey);
+          }
+          var stripe = self.stripe;
+        }
+        catch (e) {
           $form.find('#payment-errors').html(Drupal.theme('commerceStripeError', e.message));
           $form.find(':input.button--primary').prop('disabled', true);
           $(this).find('.form-item').hide();
@@ -57,6 +62,7 @@
         };
         // Create instances of the card elements.
         self.cardNumber = elements.create('cardNumber', {
+          showIcon: drupalSettings.commerceStripe.enable_credit_card_logos,
           classes: classes,
           placeholder: ''
         });
@@ -98,15 +104,58 @@
           }
         };
 
+        // Helper to get billing details.
+        var stripeBillingDetails = function () {
+          var name = [], details = {},
+            copyFields = $('input[name=payment_information\\[add_payment_method\\]\\[billing_information\\]\\[copy_fields\\]\\[enable\\]]').is(':checked');
+          // Get billing details from payment or shipping as configured.
+          $('.checkout-pane-' + (copyFields ? 'shipping' : 'payment') + '-information [data-stripe]').each(function() {
+            var element = $(this), field = element.attr('data-stripe').split('.');
+            var value = element.val();
+            if (value) {
+              switch (field[0]) {
+                case 'email':
+                  details.email = value;
+                  break;
+                case 'name':
+                  name[parseInt(field[1])] = value;
+                  break;
+                case 'address':
+                  if (!details.address) {
+                    details.address = {}
+                  }
+                  details.address[field[1]] = value;
+                  break;
+              }
+            }
+          });
+          // If no email field was found in payment/shipping, use the first
+          // matching field in other panes.
+          if (!details.email) {
+            var email = $('.checkout-pane [data-stripe="email"]').first().val();
+            if (email) {
+              details.email = email;
+            }
+          }
+          if (name.length) {
+            details.name = name.join(' ').trim();
+          }
+
+          return details;
+        }
+
         // Form submit.
         $form.on('submit.commerce_stripe', function (e) {
           if ($('#stripe-payment-method-id', $form).val().length > 0) {
             return true;
           }
-
           if (drupalSettings.commerceStripe.clientSecret === null) {
-            // Try to create the Stripe token and submit the form.
-            stripe.createPaymentMethod('card', self.cardNumber).then(function (result) {
+            // Try to create the Stripe payment method and submit the form.
+            stripe.createPaymentMethod({
+              type: 'card',
+              card: self.cardNumber,
+              billing_details: stripeBillingDetails()
+            }).then(function (result) {
               if (result.error) {
                 // Inform the user if there was an error.
                 stripeErrorHandler(result);
@@ -116,7 +165,11 @@
               }
             });
           } else {
-            stripe.handleCardSetup(drupalSettings.commerceStripe.clientSecret, self.cardNumber).then(function (result) {
+            stripe.handleCardSetup(drupalSettings.commerceStripe.clientSecret, self.cardNumber, {
+              payment_method_data: {
+                billing_details: stripeBillingDetails()
+              }
+            }).then(function (result) {
               if (result.error) {
                 // Inform the user if there was an error.
                 stripeErrorHandler(result);
