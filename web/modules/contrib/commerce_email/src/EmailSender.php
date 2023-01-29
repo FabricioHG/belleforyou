@@ -131,7 +131,7 @@ class EmailSender implements EmailSenderInterface {
       $to = implode(', ', $result);
     }
     else {
-      $to = $this->replaceTokens($email->getTo(), $entity);
+      $to = $this->replaceTokens($email->getTo(), [$entity->getEntityTypeId() => $entity]);
     }
     return $to;
   }
