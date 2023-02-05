@@ -1,0 +1,20 @@
+uuid: d3252d54-108a-4b1b-b641-cd4f1c47fffb
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.categoria
+  module:
+    - path
+id: taxonomy_term.categoria.path
+field_name: path
+entity_type: taxonomy_term
+bundle: categoria
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

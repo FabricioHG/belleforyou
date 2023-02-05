@@ -1,0 +1,24 @@
+# Spanish translation of Commerce Stripe (8.x-1.0-rc7)
+# Copyright (c) 2023 by the Spanish translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Commerce Stripe (8.x-1.0-rc7)\n"
+"POT-Creation-Date: 2023-01-19 09:47+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Expiration date"
+msgstr "Fecha de expiración"
+msgid "Secret key"
+msgstr "Llave secreta"
+msgid "Secret Key"
+msgstr "Clave secreta"
+msgid "Card number"
+msgstr "Número de tarjeta"
+msgid "Commerce (contrib)"
+msgstr "Commerce (contrib)"

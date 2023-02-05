@@ -10,10 +10,10 @@ id: commerce_product.default.field_categorias_producto
 field_name: field_categorias_producto
 entity_type: commerce_product
 bundle: default
-label: Categorías
+label: Categories
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

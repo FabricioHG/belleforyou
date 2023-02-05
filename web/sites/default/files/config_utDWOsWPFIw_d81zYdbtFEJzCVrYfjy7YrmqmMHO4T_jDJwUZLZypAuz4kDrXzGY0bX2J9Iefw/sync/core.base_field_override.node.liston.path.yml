@@ -1,0 +1,20 @@
+uuid: 755fb279-dc08-4683-95fb-d40d8646c09b
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.liston
+  module:
+    - path
+id: node.liston.path
+field_name: path
+entity_type: node
+bundle: liston
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

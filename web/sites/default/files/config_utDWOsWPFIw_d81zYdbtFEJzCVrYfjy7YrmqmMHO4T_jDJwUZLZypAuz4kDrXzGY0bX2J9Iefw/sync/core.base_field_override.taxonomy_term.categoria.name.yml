@@ -1,0 +1,18 @@
+uuid: a3566b18-86c1-4263-86b3-ae714a0ef5d8
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.categoria
+id: taxonomy_term.categoria.name
+field_name: name
+entity_type: taxonomy_term
+bundle: categoria
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

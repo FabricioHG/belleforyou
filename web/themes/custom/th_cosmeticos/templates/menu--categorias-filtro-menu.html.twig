@@ -24,11 +24,16 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0) }}
 
-{% macro menu_links(items, attributes, menu_level) %}
+
+
+{{ menus.menu_links(items, attributes, 0, language) }}
+
+{% macro menu_links(items, attributes, menu_level, language) %}
   {% import _self as menus %}
   {% if items %}
+
+
     {% if menu_level == 0 %}
 <ul{{ attributes.addClass(['nav navbar-nav']) }}>
   {% else %}
@@ -40,18 +45,26 @@
       'nav-link',
       item.is_expanded ? 'dropdown-toggle',
       item.is_collapsed ? 'dropdown-toggle',
-      item.in_active_trail ? 'active',
+      item.in_active_trail ? 'active', 
     ]
     %}
   
-    {% set url_item = item.title|replace({' ': '-'})|lower|tl %}
-    
+    {% set name_tax = item.title|replace({' ': '-'})|lower|tl %}
+   
+    {% if(language != 'es') %}
+      {% set url_cus ='/' ~ language ~ '/' ~ 'productos'|t  ~ '/' ~ 'categoria'|t  ~ '/'  ~ name_tax  %}
+    {% else %}
+      {% set url_cus = '/' ~ 'productos'|t  ~ '/' ~ 'categoria'|t  ~ '/'  ~ name_tax %}
+    {% endif %}
+   
+
     <li{{ item.attributes.addClass('nav-item') }}>
      <!--  {{ link(item.title, item.url, { 'class': classes_link }) }} -->
-      <a href="/productos/categoria/{{url_item}}">{{item.title}}</a>
+
+      <a href="{{url_cus}}">{{item.title}}</a>
       {% if item.below %}
         {<!-- { menus.menu_links(item.below, attributes, menu_level + 1) }} -->
-         <a href="/productos/categoria/{{url_item}}">{{item.title}}</a>
+         <a href="{{url_cus}}">{{item.title}}</a>
       {% endif %}
     </li>
   {% endfor %}

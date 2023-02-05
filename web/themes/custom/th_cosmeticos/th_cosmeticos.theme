@@ -1,0 +1,9 @@
+<?php
+
+
+
+function th_cosmeticos_preprocess_menu(&$variables) {
+
+    $variables['language'] = $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  
+}

@@ -146,7 +146,7 @@ display:
           type: commerce_price_default
           settings:
             strip_trailing_zeroes: false
-            currency_display: symbol
+            currency_display: code
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -313,7 +313,7 @@ display:
           type: commerce_price_default
           settings:
             strip_trailing_zeroes: false
-            currency_display: symbol
+            currency_display: code
           group_column: ''
           group_columns: {  }
           group_rows: true

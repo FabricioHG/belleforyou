@@ -1,0 +1,18 @@
+uuid: 9c30b09c-99ed-4fa5-8076-4f0828f5ac2e
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.liston
+id: node.liston.title
+field_name: title
+entity_type: node
+bundle: liston
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

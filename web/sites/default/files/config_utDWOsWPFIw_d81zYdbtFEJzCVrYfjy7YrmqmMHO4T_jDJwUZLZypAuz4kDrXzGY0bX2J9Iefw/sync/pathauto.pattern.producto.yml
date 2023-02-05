@@ -4,11 +4,22 @@ status: true
 dependencies:
   module:
     - commerce_product
+    - language
 id: producto
 label: Producto
 type: 'canonical_entities:commerce_product'
 pattern: '/producto/[commerce_product:field_categorias_producto]/[commerce_product:title]'
-selection_criteria: {  }
+selection_criteria:
+  29361bf9-74bc-499c-85af-64eb6bff697a:
+    id: language
+    negate: false
+    uuid: 29361bf9-74bc-499c-85af-64eb6bff697a
+    context_mapping:
+      language: 'commerce_product:langcode:language'
+    langcodes:
+      es: es
 selection_logic: and
 weight: 0
-relationships: {  }
+relationships:
+  'commerce_product:langcode:language':
+    label: Language

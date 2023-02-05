@@ -1,0 +1,22 @@
+uuid: bf0f0def-80f0-4030-b078-d9ec2e17c6a6
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.categoria
+id: taxonomy_term.categoria.status
+field_name: status
+entity_type: taxonomy_term
+bundle: categoria
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

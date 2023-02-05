@@ -1,0 +1,18 @@
+uuid: 90ffbef7-ac8a-48d1-abb0-7a005e2828c2
+langcode: es
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.default
+id: commerce_product_variation.default.created
+field_name: created
+entity_type: commerce_product_variation
+bundle: default
+label: Creado
+description: 'La fecha en la que la varación fue creada'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

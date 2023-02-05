@@ -1,0 +1,22 @@
+uuid: 214637e0-b1de-44df-b8d0-177a68c36b02
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+id: node.slideshow.status
+field_name: status
+entity_type: node
+bundle: slideshow
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 99c1a736-6db1-4a16-b00d-100828086e53
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.liston
+id: node.liston.changed
+field_name: changed
+entity_type: node
+bundle: liston
+label: Modificado
+description: 'La fecha en que el nodo fue editado por última vez.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: 2334ba08-9cb6-4e48-8d52-f22de25cc686
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+id: node.slideshow.created
+field_name: created
+entity_type: node
+bundle: slideshow
+label: 'Fecha de autoría'
+description: 'La fecha en que el nodo fue creado.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created
