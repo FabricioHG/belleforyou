@@ -1,0 +1,9 @@
+rates:
+  MXN:
+    USD:
+      value: !!float 0
+      sync: 0
+  USD:
+    MXN:
+      value: !!float 0
+      sync: 0

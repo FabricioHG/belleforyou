@@ -1,0 +1,15 @@
+name: 'Commerce Exchanger'
+type: module
+description: 'Commerce 2 Exchange Rates'
+core_version_requirement: ^8.8 || ^9 || ^10
+package: Commerce (Contrib)
+
+dependencies:
+  - commerce:commerce_price
+
+php: 7.4
+
+# Information added by Drupal.org packaging script on 2022-09-17
+version: '8.x-1.21'
+project: 'commerce_exchanger'
+datestamp: 1663411447

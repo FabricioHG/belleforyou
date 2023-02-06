@@ -1,0 +1,9 @@
+# Controller for import.
+commerce_exchanger.import:
+  path: '/admin/commerce/config/exchange-rates/import'
+  defaults:
+    _controller: '\Drupal\commerce_exchanger\Controller\ExchangerImport::run'
+  requirements:
+    _permission: 'administer commerce exchanger settings'
+  options:
+    _admin_route: TRUE

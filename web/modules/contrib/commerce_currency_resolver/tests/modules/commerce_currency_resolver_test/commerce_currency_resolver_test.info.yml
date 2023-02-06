@@ -1,0 +1,13 @@
+name: Current Currency Test
+type: module
+description: Contains various non-specific things needed in tests.
+package: Testing
+core_version_requirement: ^8.8 || ^9 || ^10
+
+dependencies:
+  - commerce_currency_resolver:commerce_currency_resolver
+
+# Information added by Drupal.org packaging script on 2022-09-29
+version: '8.x-1.61'
+project: 'commerce_currency_resolver'
+datestamp: 1664475710

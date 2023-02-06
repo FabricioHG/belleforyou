@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Main module file.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function commerce_exchanger_cron() {
+  // Import exchange rates.
+  \Drupal::service('commerce_exchanger.import')->run();
+}

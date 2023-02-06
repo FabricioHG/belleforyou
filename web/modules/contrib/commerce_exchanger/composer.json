@@ -1,0 +1,16 @@
+{
+    "name": "drupal/commerce_exchanger",
+    "type": "drupal-module",
+    "description": "Commerce 2 currency exchange rates / converter.",
+    "homepage": "https://www.drupal.org/project/commerce_exchanger",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/commerce": "~2.11"
+    }
+    ,
+    "require-dev": {
+        "ext-simplexml": "*",
+        "roave/security-advisories": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

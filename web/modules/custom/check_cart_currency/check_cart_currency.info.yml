@@ -1,0 +1,5 @@
+name: Check_cart_currency
+type: module
+description: Revisa que las divisas sean iguales antes de agregar al carrito de compra cuando ya existe un producto agregado
+package: Custom
+core_version_requirement: ^9 || ^10

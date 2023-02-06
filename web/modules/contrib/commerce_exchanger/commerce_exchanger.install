@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install file for commerce_exchanger.
+ */
+
+use Drupal\commerce_exchanger\Entity\ExchangeRates;
+
+/**
+ * Fix issues with wrongly set configuration rates schema.
+ */
+function commerce_exchanger_update_8001() {
+  // Load all existing and set properly new structure.
+  /** @var \Drupal\commerce_exchanger\Entity\ExchangeRatesInterface[] $exchange_rates */
+  if ($exchange_rates = ExchangeRates::loadMultiple()) {
+    foreach ($exchange_rates as $exchange_rate) {
+      $config_name = $exchange_rate->getExchangerConfigName();
+      $config_file = \Drupal::configFactory()->getEditable($config_name);
+      $config_file->setData(['rates' => $config_file->getRawData()]);
+      $config_file->save();
+    }
+  }
+}

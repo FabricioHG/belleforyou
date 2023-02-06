@@ -12,12 +12,14 @@ module:
   block_content: 0
   bootstrap_library: 0
   breakpoint: 0
+  check_cart_currency: 0
   ckeditor: 0
   comment: 0
   commerce: 0
   commerce_cart: 0
   commerce_checkout: 0
   commerce_email: 0
+  commerce_exchanger: 0
   commerce_log: 0
   commerce_number_pattern: 0
   commerce_order: 0

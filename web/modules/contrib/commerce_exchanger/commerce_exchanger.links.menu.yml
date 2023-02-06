@@ -1,0 +1,8 @@
+
+# Exchange rates menu items definition
+entity.commerce_exchange_rates.collection:
+  title: 'Exchange rates'
+  route_name: entity.commerce_exchange_rates.collection
+  description: 'List Exchange rates'
+  parent: commerce.store_configuration
+  weight: 99

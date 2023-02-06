@@ -1,0 +1,84 @@
+commerce_exchanger.commerce_exchange_rates.*:
+  type: config_entity
+  label: 'Exchange rates config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    plugin:
+      type: string
+    configuration:
+      type: commerce_exchanger.commerce_exchanger_provider.plugin.[%parent.plugin]
+
+commerce_exchanger.commerce_exchanger_provider.plugin.*:
+  type: commerce_exchanger_provider_configuration
+
+commerce_exchanger_provider_configuration:
+  type: mapping
+  mapping:
+    api_key:
+      type: string
+      label: 'Api Key'
+    auth:
+      type: mapping
+      label: 'Auth data'
+      mapping:
+        username:
+          type: string
+          label: 'Username'
+        password:
+          type: string
+          label: 'Password'
+    cron:
+      type: integer
+      label: 'Cron'
+    use_cross_sync:
+      type: boolean
+      label: 'Demo amount'
+    base_currency:
+      type: string
+      label: 'Base currency'
+    demo_amount:
+      type: integer
+      label: 'Demo amount'
+    mode:
+      type: string
+      label: 'Mode'
+    enterprise:
+      type: boolean
+      label: 'Enterprise'
+    manual:
+      type: boolean
+      label: 'Manual'
+    refresh_once:
+      type: boolean
+      label: 'Refresh once'
+    transform_rates:
+      type: boolean
+      label: 'Transform rates'
+
+commerce_exchanger.latest_exchange_rates.*:
+  type: config_object
+  label: 'Exchange rates'
+  mapping:
+    rates:
+      type: sequence
+      label: 'List of currencies'
+      sequence:
+        type: sequence
+        label: 'Currency upon exchanges is based'
+        sequence:
+          type: mapping
+          label: 'Other currencies exchange rates'
+          mapping:
+            value:
+              type: float
+              label: 'Value'
+            sync:
+              type: integer
+              label: 'Sync'

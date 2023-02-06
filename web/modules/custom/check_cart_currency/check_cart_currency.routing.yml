@@ -1,0 +1,8 @@
+check_cart_currency.example:
+  path: '/check-cart-currency/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\check_cart_currency\Controller\CheckCartCurrencyController::build'
+  requirements:
+    _permission: 'access content'
+

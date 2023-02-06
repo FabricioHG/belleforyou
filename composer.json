@@ -22,6 +22,7 @@
         "drupal/bootstrap4": "^2.1",
         "drupal/bootstrap_library": "^2.0",
         "drupal/commerce": "^2.32",
+        "drupal/commerce_currency_resolver": "^1.61",
         "drupal/commerce_email": "^1.0",
         "drupal/commerce_product_taxonomy_filter": "^1.0",
         "drupal/commerce_stripe": "^1.0@RC",
