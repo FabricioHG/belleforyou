@@ -5,7 +5,7 @@ package: Testing
 dependencies:
   - commerce_stripe:commerce_stripe
 
-# Information added by Drupal.org packaging script on 2023-01-19
-version: '8.x-1.0-rc7'
+# Information added by Drupal.org packaging script on 2023-02-07
+version: '8.x-1.0-rc8'
 project: 'commerce_stripe'
-datestamp: 1674120541
+datestamp: 1675765992

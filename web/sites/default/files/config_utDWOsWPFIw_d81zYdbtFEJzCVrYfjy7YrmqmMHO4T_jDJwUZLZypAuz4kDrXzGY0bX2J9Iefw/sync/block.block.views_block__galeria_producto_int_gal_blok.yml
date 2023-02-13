@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.galeria_producto_int
   module:
+    - commerce_product
     - system
     - views
   theme:
@@ -24,7 +25,14 @@ settings:
   views_label: ''
   items_per_page: none
 visibility:
+  'entity_bundle:commerce_product':
+    id: 'entity_bundle:commerce_product'
+    negate: false
+    context_mapping:
+      commerce_product: '@commerce_product.product_route_context:commerce_product'
+    bundles:
+      default: default
   request_path:
     id: request_path
     negate: false
-    pages: '/product/*'
+    pages: "/product/*\r\n/en/product/*"

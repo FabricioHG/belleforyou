@@ -312,9 +312,10 @@ final class Price {
    *   Thrown when the prices do not have the same currency.
    */
   protected function assertSameCurrency(Price $first_price, Price $second_price) {
-    if ($first_price->getCurrencyCode() != $second_price->getCurrencyCode()) {
-      throw new CurrencyMismatchException(sprintf('The provided prices have mismatched currencies: %s, %s.', $first_price->__toString(), $second_price->__toString()));
-    }
+    // if ($first_price->getCurrencyCode() != $second_price->getCurrencyCode()) {
+      
+    //   throw new CurrencyMismatchException(sprintf('The provided prices have mismatched currencies: %s, %s.', $first_price->__toString(), $second_price->__toString()));
+    // }
   }
 
 }

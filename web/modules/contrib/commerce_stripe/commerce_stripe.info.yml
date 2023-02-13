@@ -6,7 +6,7 @@ core_version_requirement: ^8.9 || ^9 || ^10
 dependencies:
   - commerce:commerce_payment
 
-# Information added by Drupal.org packaging script on 2023-01-19
-version: '8.x-1.0-rc7'
+# Information added by Drupal.org packaging script on 2023-02-07
+version: '8.x-1.0-rc8'
 project: 'commerce_stripe'
-datestamp: 1674120541
+datestamp: 1675765992

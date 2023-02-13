@@ -1,9 +1,9 @@
 rates:
   MXN:
     USD:
-      value: 0.054
+      value: !!float 1
       sync: 1
   USD:
     MXN:
-      value: 0.008
+      value: !!float 1
       sync: 1

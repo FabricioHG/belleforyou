@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'abb967279e2f2a324fef163d34309b5bc1ba75ff',
+        'reference' => '3a8521d4fc4942382bd4a8082f54cd97db601944',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -380,12 +380,12 @@
             'dev_requirement' => false,
         ),
         'drupal/commerce_stripe' => array(
-            'pretty_version' => '1.0.0-rc7',
-            'version' => '1.0.0.0-RC7',
+            'pretty_version' => '1.0.0-rc8',
+            'version' => '1.0.0.0-RC8',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/commerce_stripe',
             'aliases' => array(),
-            'reference' => '8.x-1.0-rc7',
+            'reference' => '8.x-1.0-rc8',
             'dev_requirement' => false,
         ),
         'drupal/commerce_stripe_ideal' => array(
@@ -670,7 +670,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'abb967279e2f2a324fef163d34309b5bc1ba75ff',
+            'reference' => '3a8521d4fc4942382bd4a8082f54cd97db601944',
             'dev_requirement' => false,
         ),
         'drupal/state_machine' => array(

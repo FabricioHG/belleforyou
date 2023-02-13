@@ -1,0 +1,6 @@
+services:
+  check_cart_currency.add_cart_subscriber:
+    class: Drupal\check_cart_currency\EventSubscriber\CartSubscriber
+    arguments: ['@messenger']
+    tags:
+       - { name: event_subscriber }

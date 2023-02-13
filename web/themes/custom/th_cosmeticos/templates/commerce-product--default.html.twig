@@ -39,12 +39,26 @@
 {% set precio = variation_object.getPrice().getNumber() %}
 {% set precio_moneda = variation_object.getPrice().getCurrencyCode() %}
 
+{% if(language != 'es') %}
+	{% set url_cus ='/' ~ language ~ '/' ~ 'productos'|t  ~ '/' ~ 'categoria'|t  ~ '/'  ~ name_tax  %}
+{% else %}
+    {% set url_cus = '/' ~ 'productos'|t  ~ '/' ~ 'categoria'|t  ~ '/'  ~ name_tax %}
+{% endif %}
+
+{% set categorias = product.field_categorias_producto %}
+
 <article{{ attributes }}>
 	<div class="int_prod_data">
 		<h4>{{product.title}}</h4>
 		<p>{{product.body}}</p>
-		<p>{{product.field_categorias_producto}}</p>
-
+		<p style="margin: 0;"><strong>{{'Categorias'|tl}}</strong></p>
+		{% for key, value in categorias %}
+			{% if key matches '/^\\d+$/' %}
+				{% set tit_cat = value['#plain_text']|replace({' ':'-'})|lower|tl %}
+				<a href="{{url_cus}}{{tit_cat}}">{{value["#plain_text"]}}</a></br>
+			{% endif %}
+		{% endfor %}
+		</br>
 		{% if precio_de_lista > 0 %}
 			<p class="p_int_precio_lista">Precio anterior: <span class="sp_int_precio_lista">{{precio_de_lista|number_format(2, '.', ',')}}</span>  <span class="label_moneda">{{precio_de_lista_moneda}}</span> <span class="tach_pre_lis_int"></span> </p>
 		{% endif%}

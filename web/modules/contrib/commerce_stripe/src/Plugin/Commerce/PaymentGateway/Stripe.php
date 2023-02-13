@@ -242,7 +242,21 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
     assert($order instanceof OrderInterface);
     $intent_id = $order->getData('stripe_intent');
     try {
-      $intent = PaymentIntent::retrieve($intent_id);
+      if (!empty($intent_id)) {
+        $intent = PaymentIntent::retrieve($intent_id);
+      }
+      else {
+        // If there is no payment intent, it means we are not in a checkout
+        // flow with the stripe review pane, so we should assume the
+        // customer is not available for SCA and create an immediate
+        // off_session payment intent.
+        $intent_attributes = [
+          'confirm'        => TRUE,
+          'off_session'    => TRUE,
+          'capture_method' => $capture ? 'automatic' : 'manual',
+        ];
+        $intent = $this->createPaymentIntent($order, $intent_attributes, $payment);
+      }
       if ($intent->status === PaymentIntent::STATUS_REQUIRES_CONFIRMATION) {
         $intent = $intent->confirm();
       }
@@ -266,7 +280,7 @@ class Stripe extends OnsitePaymentGatewayBase implements StripeInterface {
         throw new HardDeclineException($decline_message);
       }
       if (count($intent->charges->data) === 0) {
-        throw new HardDeclineException(sprintf('The payment intent %s did not have a charge object.', $intent_id));
+        throw new HardDeclineException(sprintf('The payment intent %s did not have a charge object.', $intent->id));
       }
       $next_state = $capture ? 'completed' : 'authorization';
       $payment->setState($next_state);

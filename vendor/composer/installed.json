@@ -2799,18 +2799,18 @@
         },
         {
             "name": "drupal/commerce_stripe",
-            "version": "1.0.0-rc7",
-            "version_normalized": "1.0.0.0-RC7",
+            "version": "1.0.0-rc8",
+            "version_normalized": "1.0.0.0-RC8",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce_stripe.git",
-                "reference": "8.x-1.0-rc7"
+                "reference": "8.x-1.0-rc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_stripe-8.x-1.0-rc7.zip",
-                "reference": "8.x-1.0-rc7",
-                "shasum": "8e63311d5c3e59f40829cc829846c87662847aad"
+                "url": "https://ftp.drupal.org/files/projects/commerce_stripe-8.x-1.0-rc8.zip",
+                "reference": "8.x-1.0-rc8",
+                "shasum": "aa8af7d1b26165aec352fd18095170f91ca46e43"
             },
             "require": {
                 "drupal/commerce": "^2.25 || ^3",
@@ -2821,8 +2821,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc7",
-                    "datestamp": "1674120538",
+                    "version": "8.x-1.0-rc8",
+                    "datestamp": "1675765990",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
