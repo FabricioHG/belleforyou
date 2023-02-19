@@ -1,0 +1,17 @@
+uuid: 1f5dac55-71f9-425d-b016-d1e1db9d7597
+langcode: es
+status: true
+dependencies:
+  module:
+    - commerce_shipping
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: commerce_shipping_method.commerce_shipping_method
+target_entity_type_id: commerce_shipping_method
+target_bundle: commerce_shipping_method
+default_langcode: site_default
+language_alterable: false

@@ -42,7 +42,7 @@ configuration:
       step: complete
       weight: 6
       message:
-        value: "<h2>¡Gracias por confiar en nosotros!</h2>\r\n\r\n<p><strong>Te enviamos un correo con la información de tu compra. </strong></p>\r\n\r\n<p>Your order number is <strong>[commerce_order:order_number].</strong></p>\r\n\r\n<p>You can view your order on your account page when logged in.</p>\r\n"
+        value: "<h2>¡Gracias por confiar en nosotros!</h2>\r\n\r\n<p><strong>Te enviamos un correo con la información de tu compra. </strong></p>\r\n\r\n<p>Tu numero de orden es <strong>[commerce_order:order_number].</strong></p>\r\n\r\n<p>Puede ver su pedido en la página de su cuenta cuando inicie sesión.</p>\r\n"
         format: full_html
     completion_register:
       step: complete

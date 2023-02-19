@@ -11,7 +11,7 @@ bundle: default
 label: Creado
 description: 'La fecha en la que la varación fue creada'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

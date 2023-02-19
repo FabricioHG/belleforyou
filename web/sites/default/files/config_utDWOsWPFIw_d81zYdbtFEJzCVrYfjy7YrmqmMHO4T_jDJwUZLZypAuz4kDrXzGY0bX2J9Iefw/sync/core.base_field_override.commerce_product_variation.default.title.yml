@@ -11,7 +11,7 @@ bundle: default
 label: Title
 description: 'El título de la variación.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

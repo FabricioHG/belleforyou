@@ -26,9 +26,8 @@
     <table class="table-striped">
       <tbody>
       {% for order_item in order_entity.getItems %}
-      
         <tr>
-          <td>{{ order_item.getQuantity|number_format }}&nbsp;x</td>
+          <td>{{ order_item.getQuantity|number_format }}&nbsp;</td>
           {% if order_item.hasPurchasedEntity %}
             <td>{{ order_item.getPurchasedEntity|commerce_entity_render('summary') }}</td>
           {% else %}
@@ -43,10 +42,16 @@
   {% block totals %}
     {# rendered_totals #}
     <div class="subtotal_resume_order">
-      <strong>Subtotal:</strong> {{ totals.subtotal.getCurrencyCode() }} {{ totals.subtotal.getNumber()|number_format(2, '.', ',') }}
+      <strong>Subtotal: </strong> {{ totals.subtotal.getCurrencyCode() }} {{ totals.subtotal.getNumber()|number_format(2, '.', ',') }}
     </div>
+    {% for adjustment in totals.adjustments %}
     <div class="subtotal_resume_order">
-     <strong> Total:</strong> {{ totals.total.getCurrencyCode() }} {{ totals.total.getNumber()|number_format(2, '.', ',') }}
+      <strong>{{ adjustment.label }}</strong> {{ adjustment.amount.getCurrencyCode() }} {{ adjustment.amount.getNumber()|number_format(2, '.', ',') }}
+    </div>
+  {% endfor %}
+
+    <div class="subtotal_resume_order">
+     <strong> Total: </strong> {{ totals.total.getCurrencyCode() }} {{ totals.total.getNumber()|number_format(2, '.', ',') }}
     </div>
   {% endblock %}
 </div>

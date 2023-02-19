@@ -5,12 +5,21 @@ header{
   width: 100%;
 }
 main {
-  margin-top: 85px;
+  margin-top: 60px;
 }
-
+.cont_pago_seg {
+  display: flex;
+  justify-content: space-evenly;
+}
+.cont_pago_seg img{
+  max-width: 200px;
+}
+img.tarjet{
+  max-width: 129px;
+}
 .region-breadcrumb{
   position: sticky;
-  top: 85px;
+  top: 60px;
   z-index: 2;
 }
 .view-todos-los-productos .view-content, .view-display-id-page_1 .view-content{
@@ -124,6 +133,41 @@ main {
 #block-categoriasfiltromenu ul.nav.navbar-nav li.nav-item a:hover{
   color: #fff;
 }
+#edit-shipping-information-recalculate-shipping {
+  margin-top: 10px;
+}
+#block-alternadordeidioma ul li{
+  margin: 2px;
+}
+#block-alternadordeidioma ul li a:hover{
+  text-decoration: none;
+}
+#block-alternadordeidioma ul li:nth-child(1) a{
+  background-image: url('/themes/custom/th_cosmeticos/img/ban_mxn.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #fff;
+  padding-left: 30px;
+  color: #fff;
+  font-size: 12px;
+}
+#block-alternadordeidioma ul li:nth-child(2) a{
+  background-image: url('/themes/custom/th_cosmeticos/img/ban_eng.png');
+  background-repeat: no-repeat; 
+  background-size: contain;
+  color: #fff;
+  padding-left: 30px;
+  color: #fff;
+  font-size: 12px;
+}
+.navbar-light .navbar-toggler{
+  color: #fff;
+  border-color: #fff;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.6%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /*Interior*/
 #block-views-block-galeria-producto-int-gal-blok {
   display: inline-block;
@@ -204,8 +248,12 @@ main {
 .derechos p{
   text-align: center;
 }
-.redes_pie img{
-  width: 100px;
+.redes_pie img {
+  width: 44px;
+  padding: 4px;
+  background-color: #FA5401;
+  border-radius: 50%;
+  margin: 6px;
 }
 .menu_pie{
   width: 256px;
@@ -325,11 +373,37 @@ footer.mt-auto.footer-dark.text-light.bg-secondary{
 #block-useraccountmenu ul li a:hover{
   color: #fcd452;
 }
-
+.alert-warning{
+  top: 20px;
+}
 /* Medidas de celulares ***************************************************************************************************/
  /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
+  #block-th-cosmeticos-content .table thead th{
+    font-size: 12px;
+    padding: 2px;
+    text-align: center;
+  }
+  #block-th-cosmeticos-content .table th, .table td{
+    font-size: 12px;
+    vertical-align: middle;
+  }
+  #block-th-cosmeticos-content #edit-edit-quantity-0{
+    width: 100%;
+    height: 22px;
+    padding: 3px;
+    font-size: 14px;
+  }
+  #block-th-cosmeticos-content #edit-remove-button-0{
+    padding: 3px;
+    font-size: 12px;
+  }
+  #block-th-cosmeticos-content .table th, .table td{
+    padding: 2px;
+  }
+  #block-th-cosmeticos-content #commerce-checkout-flow-multistep-default #edit-login{
+    flex-flow: column-reverse;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -347,6 +421,11 @@ footer.mt-auto.footer-dark.text-light.bg-secondary{
 	.nav-item {
   		margin-left: 10px;
 	}
+  .region-breadcrumb{
+    position: sticky;
+    top: 80px;
+    z-index: 2;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

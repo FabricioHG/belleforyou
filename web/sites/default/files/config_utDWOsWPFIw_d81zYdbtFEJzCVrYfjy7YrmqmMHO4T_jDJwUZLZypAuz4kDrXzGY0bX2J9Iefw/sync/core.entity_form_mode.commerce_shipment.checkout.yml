@@ -1,0 +1,12 @@
+uuid: ca58e53b-0eb5-4382-89a5-ba01669e9ac2
+langcode: es
+status: true
+dependencies:
+  module:
+    - commerce_shipping
+_core:
+  default_config_hash: SOM4LMI0fFeahHJLPEPoVldiWGePCGwhTERi0cTjb0U
+id: commerce_shipment.checkout
+label: Pagar
+targetEntityType: commerce_shipment
+cache: true

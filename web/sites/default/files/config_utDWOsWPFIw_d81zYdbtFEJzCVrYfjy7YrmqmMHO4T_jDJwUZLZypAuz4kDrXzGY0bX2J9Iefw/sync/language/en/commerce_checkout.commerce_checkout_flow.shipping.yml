@@ -1,0 +1,6 @@
+configuration:
+  panes:
+    completion_message:
+      message:
+        value: "<h2>¡Thanks for trusting us!</h2>\r\n\r\n<p><strong>We send you an email with the information of your purchase. </strong></p>\r\n\r\n<p>Your order number is <strong>[commerce_order:order_number].</strong></p>\r\n\r\n<p>You can view your order on your account page when logged in.</p>\r\n"
+        format: full_html

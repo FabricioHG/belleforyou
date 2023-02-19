@@ -21,6 +21,7 @@ settings:
             - JustifyLeft
             - JustifyCenter
             - JustifyBlock
+            - Indent
             - Italic
             - Strike
             - Superscript

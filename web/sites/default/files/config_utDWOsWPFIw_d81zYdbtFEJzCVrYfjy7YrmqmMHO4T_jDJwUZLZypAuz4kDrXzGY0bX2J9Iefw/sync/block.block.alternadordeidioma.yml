@@ -22,4 +22,4 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: "/producto/*\r\n/cart/*\r\n/checkout/*"
+    pages: "/producto/*\r\n/cart/*\r\n/checkout/*\r\n/product/*\r\n/cart"

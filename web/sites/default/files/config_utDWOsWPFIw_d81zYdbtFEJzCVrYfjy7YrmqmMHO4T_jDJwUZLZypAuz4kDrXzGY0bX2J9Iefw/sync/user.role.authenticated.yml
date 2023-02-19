@@ -10,8 +10,10 @@ dependencies:
     - commerce_order
     - commerce_payment
     - commerce_product
+    - commerce_shipping
     - contact
     - filter
+    - google_analytics
     - search
     - shortcut
     - system
@@ -29,9 +31,11 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'manage own commerce_payment_method'
+  - 'opt-in or out of google analytics tracking'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
   - 'view commerce_product'
+  - 'view commerce_shipping_method'
   - 'view own commerce_order'

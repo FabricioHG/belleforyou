@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.default
+    - field.field.commerce_product_variation.default.weight
   module:
     - commerce_price
 id: commerce_product_variation.default.default
@@ -16,7 +17,7 @@ content:
     label: hidden
     settings:
       strip_trailing_zeroes: false
-      currency_display: symbol
+      currency_display: code
     third_party_settings: {  }
     weight: -1
     region: content
@@ -34,3 +35,4 @@ hidden:
   product_id: true
   sku: true
   title: true
+  weight: true
