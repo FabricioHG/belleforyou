@@ -1,0 +1,65 @@
+uuid: a081378f-90d3-48c3-a502-6b980772af0c
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.categoria
+  module:
+    - commerce
+    - commerce_order
+    - commerce_payment
+    - commerce_product
+    - commerce_promotion
+    - commerce_shipping
+    - commerce_store
+    - taxonomy
+    - toolbar
+id: gestor_de_tienda
+label: 'Gestor de tienda'
+weight: 4
+is_admin: null
+permissions:
+  - 'access commerce administration pages'
+  - 'access commerce_product overview'
+  - 'access commerce_promotion overview'
+  - 'access commerce_shipping_method overview'
+  - 'access toolbar'
+  - 'add commerce_log commerce_order admin comment'
+  - 'administer commerce_order'
+  - 'administer commerce_package_type'
+  - 'administer commerce_payment'
+  - 'administer commerce_payment_method'
+  - 'administer commerce_product'
+  - 'administer commerce_shipment'
+  - 'administer commerce_shipment_type'
+  - 'administer commerce_shipping_method'
+  - 'administer taxonomy'
+  - 'bulk generate commerce_promotion_coupon'
+  - 'create commerce_promotion'
+  - 'create commerce_shipping_method'
+  - 'create default commerce_order'
+  - 'create default commerce_product'
+  - 'create terms in categoria'
+  - 'delete any commerce_promotion'
+  - 'delete any default commerce_product'
+  - 'delete commerce_shipping_method'
+  - 'delete default commerce_order'
+  - 'delete own commerce_promotion'
+  - 'delete own default commerce_product'
+  - 'delete terms in categoria'
+  - 'duplicate any commerce_promotion'
+  - 'duplicate own commerce_promotion'
+  - 'edit terms in categoria'
+  - 'update any commerce_payment_method'
+  - 'update any commerce_promotion'
+  - 'update any default commerce_product'
+  - 'update commerce_shipping_method'
+  - 'update default commerce_order'
+  - 'update own commerce_promotion'
+  - 'update own default commerce_product'
+  - 'view any commerce_payment_method'
+  - 'view commerce_order'
+  - 'view commerce_promotion'
+  - 'view default commerce_order'
+  - 'view online commerce_store'
+  - 'view own unpublished commerce_product'

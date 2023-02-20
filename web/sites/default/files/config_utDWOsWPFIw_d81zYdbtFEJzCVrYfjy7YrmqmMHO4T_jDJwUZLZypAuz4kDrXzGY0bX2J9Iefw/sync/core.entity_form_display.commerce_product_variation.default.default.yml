@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.default
-    - field.field.commerce_product_variation.default.weight
   module:
     - commerce_price
-    - physical
 _core:
   default_config_hash: dDLA40Axom_QFA79EWUpe_bWXWE8I_7MijzPkslbVfA
 id: commerce_product_variation.default.default
@@ -57,14 +55,10 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  weight:
-    type: physical_measurement_default
-    weight: 91
+  translation:
+    weight: 10
     region: content
-    settings:
-      default_unit: ''
-      allow_unit_change: true
-      available_units: {  }
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

@@ -1,0 +1,14 @@
+uuid: a7eade2f-c78c-4665-b377-eef993a5161d
+langcode: es
+status: true
+dependencies:
+  config:
+    - user.role.gestor_de_tienda
+  module:
+    - user
+id: user_add_role_action.gestor_de_tienda
+label: 'Añade el rol Gestor de tienda al(los) usuario(s) seleccionado(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: gestor_de_tienda
